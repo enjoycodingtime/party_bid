@@ -14,13 +14,18 @@ angular.module('partyBidApp')
             'AngularJS',
             'Karma'
         ];
+//        var l=localStorage.length;
+//        if(l==0){
+//            $location.path('/main')
+//
+//        }
 
 
-        var arr1=JSON.parse(localStorage['activitykey']);
+        var arr1=JSON.parse(localStorage['activitykey']||'[]');
         $scope.lists=arr1;
         $scope.partyname=localStorage.getItem("partyname");
         $scope.createactivity=function(){
-            $location.path('/')
+            $location.path('/main')
         }
         $scope.gobook=function(book_partyname){
             Partyname1.save_name(book_partyname);
