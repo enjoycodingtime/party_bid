@@ -21,24 +21,29 @@ angular.module('partyBidApp')
         else{
             back_nn=false;
         }
-        console.log(back_nn);
         $scope.back_button=back_nn;
         $scope.back_n=localStorage.length;
-        //console.log(localStorage.length==0);
         $scope.listactivity=function(){
             $location.path('/list')
         }
         $scope.activity=function(name){
-
-
-            var tempjson= JSON.parse(localStorage['activitykey'] || '[]');
-            tempjson.unshift(name);
-            localStorage['activitykey']=JSON.stringify(tempjson);
-           // console.log(name);
-            Partyname1.save_name(name);
-           // Partyname.save_name(name);
-            $location.path('/book')
+            var list_json= JSON.parse(localStorage['activitykey'] || '[]');
+            for(var i=0;i<list_json.length;i++)
+            {
+                if(list_json[i]==name)
+                {
+                   var chongfu=1;
+                }
+            }
+            if(chongfu==1)
+            {
+                $scope.warn="活动名称有重复，请重新输入！"
+            }
+            else{
+                list_json.unshift(name);
+                localStorage['activitykey']=JSON.stringify(list_json);
+                Partyname1.save_name(name);
+                $location.path('/book')
+            }
         }
-
-
   });

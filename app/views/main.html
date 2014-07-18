@@ -10,10 +10,13 @@
     </header>
     </div>
 <div>
-   请输入活动的名称： <input class="input-full" type="text" ng-model="name">
+   请输入活动的名称： <input class="input-full" type="text" ng-model="name" placeholder="活动名字">
 </div>
+        <div>
+            {{warn}}
+        </div>
 
 <div>
-    <button class="btn-style btn-2" ng-click="activity(name)" ng-disabled="!name">确认</button>
+    <button class="btn btn-style btn-2" ng-click="activity(name)" ng-disabled="!name" style="">确认</button>
 
 </div>
