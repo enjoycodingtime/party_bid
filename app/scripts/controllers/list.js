@@ -14,10 +14,10 @@ angular.module('partyBidApp')
             'AngularJS',
             'Karma'
         ];
-        //$scope.lists = List.get_all_lists();
-        $scope.lists=JSON.parse(localStorage['Local_list']);
 
 
+        var arr1=JSON.parse(localStorage['activitykey']);
+        $scope.lists=arr1;
         $scope.partyname=localStorage.getItem("partyname");
         $scope.createactivity=function(){
             $location.path('/')

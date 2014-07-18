@@ -14,13 +14,20 @@ angular.module('partyBidApp')
       'AngularJS',
       'Karma'
     ];
+
+
         $scope.listactivity=function(){
             $location.path('/list')
         }
         $scope.activity=function(name){
+
+
+            var tempjson= JSON.parse(localStorage['activitykey'] || '[]');
+            tempjson.unshift(name);
+            localStorage['activitykey']=JSON.stringify(tempjson);
             console.log(name);
             Partyname1.save_name(name);
-            Partyname.save_name(name);
+           // Partyname.save_name(name);
             $location.path('/book')
         }
 
