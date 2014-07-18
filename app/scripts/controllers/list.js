@@ -8,19 +8,11 @@
 
 angular.module('partyBidApp')
     .controller('ListCtrl', function ($scope, $location) {
-        console.log('m')
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
             'Karma'
         ];
-//        var l=localStorage.length;
-//        if(l==0){
-//            $location.path('/main')
-//
-//        }
-
-
         var arr1=JSON.parse(localStorage['activitykey']||'[]');
         $scope.lists=arr1;
         $scope.partyname=localStorage.getItem("partyname");

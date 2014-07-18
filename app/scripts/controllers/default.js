@@ -16,7 +16,7 @@ angular.module('partyBidApp')
              }else{
                  $location.path('/list')
              }
-             console.log(l);
+
 
 
 
