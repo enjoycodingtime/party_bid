@@ -15,5 +15,18 @@ angular.module('partyBidApp')
         $scope.list1=function(){
             $location.path('/list')
         }
+        $scope.delete_activity=function()
+        {
+            $location.path('/list');
+            var delete_item= JSON.parse(localStorage['activitykey']);
+            for(var i=0;i<delete_item.length;i++)
+            {
+                if(delete_item[i]==$scope.book_partyname)
+                {
+                    delete_item.splice(i,1);
+                }
+            }
+            localStorage['activitykey']=JSON.stringify(delete_item);
+        }
 
     });
