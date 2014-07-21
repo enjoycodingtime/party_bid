@@ -12,6 +12,11 @@ angular.module('partyBidApp')
         ];
         $scope.book_partyname=localStorage.getItem("book_partyname");
         $scope.startbutton=true;
+        var m_name=JSON.parse(localStorage['message_name']||'[]');
+        var m_phone=JSON.parse(localStorage['message_phone']||'[]');
+        $scope.names=m_name;
+        $scope.phones=m_phone;
+       console.log(m_name);
 
 
        // $scope.partyname="活动1";
