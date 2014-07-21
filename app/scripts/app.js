@@ -1,15 +1,4 @@
 'use strict';
-
-/**
- * @ngdoc overview
- * @name partyBidApp
- * @description
- * # partyBidApp
- *$scope.list1 = function () {
-            $location.path('/')
-        }
- * Main module of the application.
- */
 angular
   .module('partyBidApp', [
     'ngAnimate',

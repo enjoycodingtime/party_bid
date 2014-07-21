@@ -11,6 +11,9 @@ angular.module('partyBidApp')
             'Karma'
         ];
         $scope.book_partyname=localStorage.getItem("book_partyname");
+        $scope.startbutton=true;
+
+
        // $scope.partyname="活动1";
         $scope.list1=function(){
             $location.path('/list')
