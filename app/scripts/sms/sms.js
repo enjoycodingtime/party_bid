@@ -41,6 +41,11 @@ var native_accessor = {
                     localStorage['message_name']=JSON.stringify(message_name);
                     localStorage['message_phone']=JSON.stringify(message_phone);
                     localStorage['message_activity']=localStorage.getItem("book_partyname");
+                    var bookScope = angular.element("#book").scope();
+                    bookScope.$apply(function () {
+                        bookScope.refresh();
+                    });
+                    console.log(bookScope);
                     console.log('恭喜！报名成功');
                 }
             }
