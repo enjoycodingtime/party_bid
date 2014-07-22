@@ -40,6 +40,8 @@ angular.module('partyBidApp')
                 var m_phone=JSON.parse(localStorage['message_phone']||'[]');
                 $scope.names=m_name;
                 $scope.phones=m_phone;
+                var list_number= JSON.parse(localStorage['message_phone'] || '[]');
+                $scope.number=list_number.length+"人";
             }
         };
 
