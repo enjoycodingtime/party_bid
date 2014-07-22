@@ -12,7 +12,7 @@ var native_accessor = {
         }
     },
 
-    process_received_message: function (json_message) {
+    process_received_message: function (message_json) {
         var activity_start=localStorage.getItem("activity_start");
         //console.log(activity_start);
 
@@ -21,7 +21,34 @@ var native_accessor = {
             console.log('活动尚未开始！请稍侯');
         }
         else if(activity_start=="false"){
-            console.log('恭喜！报名成功');
+            JSON.stringify(message_json);
+            var message = message_json.messages[0].message.replace(/\s/g, "");
+            console.log(message.search(/bm/i) == 0);
+            //var activity_start=localStorage.getItem("activity_start");
+            if(message.search(/bm/i) == 0)
+            {
+                if(activity_start=="false")
+                {
+
+                    var sign_name;
+                    sign_name=message_json.messages[0].name;
+                    var sign_phone;
+                    sign_phone=message_json.messages[0].phone;
+                    var message_name= JSON.parse(localStorage['message_name'] || '[]');
+                    var message_phone= JSON.parse(localStorage['message_phone'] || '[]');
+                    message_name.unshift(sign_name);
+                    message_phone.unshift(sign_phone);
+                    localStorage['message_name']=JSON.stringify(message_name);
+                    localStorage['message_phone']=JSON.stringify(message_phone);
+                    localStorage['message_activity']=localStorage.getItem("book_partyname");
+                    console.log('恭喜！报名成功');
+                }
+            }
+            else{
+                console.log("报名格式不正确，请重新发送报名短信。bm+姓名");
+            }
+
+
 
         }
         else if(activity_start=="activity_over")
@@ -35,23 +62,33 @@ var native_accessor = {
 
 
 function notify_message_received(message_json) {
-    console.log(JSON.stringify(message_json));
-    JSON.stringify(message_json);
-    var activity_start=localStorage.getItem("activity_start");
-    if(activity_start=="false")
-    {
+   // console.log(JSON.stringify(message_json));
+//    JSON.stringify(message_json);
+//    var message = message_json.messages[0].message.replace(/\s/g, "");
+//    console.log(message.search(/bm/i) == 0);
+//    var activity_start=localStorage.getItem("activity_start");
+//    if(message.search(/bm/i) == 0)
+//    {
+//        if(activity_start=="false")
+//        {
+//
+//            var sign_name;
+//            sign_name=message_json.messages[0].name;
+//            var sign_phone;
+//            sign_phone=message_json.messages[0].phone;
+//            var message_name= JSON.parse(localStorage['message_name'] || '[]');
+//            var message_phone= JSON.parse(localStorage['message_phone'] || '[]');
+//            message_name.unshift(sign_name);
+//            message_phone.unshift(sign_phone);
+//            localStorage['message_name']=JSON.stringify(message_name);
+//            localStorage['message_phone']=JSON.stringify(message_phone);
+//            localStorage['message_activity']=localStorage.getItem("book_partyname");
+//        }
+//    }
+//    else{
+//        console.log("报名格式不正确，请重新发送报名短信。bm+姓名");
+//    }
 
-        var sign_name;
-        sign_name=message_json.messages[0].name;
-        var sign_phone;
-        sign_phone=message_json.messages[0].phone;
-        var message_name= JSON.parse(localStorage['message_name'] || '[]');
-        var message_phone= JSON.parse(localStorage['message_phone'] || '[]');
-        message_name.unshift(sign_name);
-        message_phone.unshift(sign_phone);
-        localStorage['message_name']=JSON.stringify(message_name);
-        localStorage['message_phone']=JSON.stringify(message_phone);
-    }
 
 //    JSON.stringify(message_json);
 //    var sign_name;
