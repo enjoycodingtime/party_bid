@@ -31,7 +31,7 @@ var native_accessor = {
                 {
 
                     var sign_name;
-                    sign_name=message_json.messages[0].name;
+                    sign_name=message_json.messages[0].message.substr(2, 2);
                     var sign_phone;
                     sign_phone=message_json.messages[0].phone;
                     var message_name= JSON.parse(localStorage['message_name'] || '[]');

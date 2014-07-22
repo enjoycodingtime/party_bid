@@ -2,9 +2,9 @@
  * Created by zhangke on 14-7-21.
  */
         function start_button_controller($scope){
-            $scope.startbutton=true;
+            $scope.startbutton=localStorage.getItem(["activity_start"]||[true]);
             localStorage.setItem("activity_start",$scope.startbutton);
-            $scope.hide=function()
+            $scope.start=function()
             {
                 $scope.startbutton=false;
                 localStorage.setItem("activity_start",$scope.startbutton);
