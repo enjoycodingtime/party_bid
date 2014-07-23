@@ -18,7 +18,7 @@
             }
 
 //            $scope.startbutton=localStorage.getItem(["activity_start"]||[true]);
-//            localStorage.setItem("activity_start",$scope.startbutton);
+            localStorage.setItem("activity_start",$scope.startbutton);
             $scope.start=function()
             {
 

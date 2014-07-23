@@ -115,56 +115,7 @@ var native_accessor = {
 
 
 function notify_message_received(message_json) {
-   // console.log(JSON.stringify(message_json));
-//    JSON.stringify(message_json);
-//    var message = message_json.messages[0].message.replace(/\s/g, "");
-//    console.log(message.search(/bm/i) == 0);
-//    var activity_start=localStorage.getItem("activity_start");
-//    if(message.search(/bm/i) == 0)
-//    {
-//        if(activity_start=="false")
-//        {
-//
-//            var sign_name;
-//            sign_name=message_json.messages[0].name;
-//            var sign_phone;
-//            sign_phone=message_json.messages[0].phone;
-//            var message_name= JSON.parse(localStorage['message_name'] || '[]');
-//            var message_phone= JSON.parse(localStorage['message_phone'] || '[]');
-//            message_name.unshift(sign_name);
-//            message_phone.unshift(sign_phone);
-//            localStorage['message_name']=JSON.stringify(message_name);
-//            localStorage['message_phone']=JSON.stringify(message_phone);
-//            localStorage['message_activity']=localStorage.getItem("book_partyname");
-//        }
-//    }
-//    else{
-//        console.log("报名格式不正确，请重新发送报名短信。bm+姓名");
-//    }
 
-
-//    JSON.stringify(message_json);
-//    var sign_name;
-//    sign_name=message_json.messages[0].name;
-//    var sign_phone;
-//    sign_phone=message_json.messages[0].phone;
-//    var message_name= JSON.parse(localStorage['message_name'] || '[]');
-//    var message_phone= JSON.parse(localStorage['message_phone'] || '[]');
-//    message_name.unshift(sign_name);
-//    message_phone.unshift(sign_phone);
-//    localStorage['message_name']=JSON.stringify(message_name);
-//    localStorage['message_phone']=JSON.stringify(message_phone);
-
-//    var message_list= JSON.parse(localStorage['message'] || '[]');
-//    message_list.unshift(JSON.stringify(message_json));
-//    localStorage['message']=JSON.stringify(message_list);
-
-    //localStorage['message']=JSON.stringify(message_json);
-//    console.log(message_json.message[0].phone);
-//    console.log(message_json.message[0].name);
-    //alert(JSON.stringify(message_json.messages));
    native_accessor.receive_message(message_json);
-//    console.log(message_json.messages[0].phone);
-//    console.log(message_json.messages[0].name);
-    //phone_number=message_json.messages[0].phone;
+
 }
