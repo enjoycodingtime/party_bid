@@ -13,11 +13,15 @@
             {
                 $scope.button_able=true;
             }
+            else{
+                $scope.button_able=false;
+            }
 
 //            $scope.startbutton=localStorage.getItem(["activity_start"]||[true]);
 //            localStorage.setItem("activity_start",$scope.startbutton);
             $scope.start=function()
             {
+
                 var started_activity=localStorage.getItem("book_partyname");
                 localStorage.setItem("started_activity",started_activity);
                 $scope.startbutton=false;

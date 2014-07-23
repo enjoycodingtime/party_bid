@@ -11,13 +11,6 @@ angular.module('partyBidApp')
             'Karma'
         ];
         $scope.book_partyname=localStorage.getItem("book_partyname");
-//        $scope.activity_yellow = function (activity) {
-//            if () {
-//                return "start";
-//            }
-//        }
-
-       // $scope.partyname="活动1";
         $scope.list1=function(){
             $location.path('/list')
         }
@@ -37,14 +30,18 @@ angular.module('partyBidApp')
 
         $scope.refresh = function () {
             var book_partyname=localStorage.getItem("book_partyname");
+
             if(book_partyname==localStorage.getItem("message_activity"))
             {
+                var storage_activity=localStorage.getItem("book_partyname");
+                var storage_name=storage_activity+"name";
+                var storage_phone=storage_activity+"phone";
                 $scope.startbutton=true;
-                var m_name=JSON.parse(localStorage['message_name']||'[]');
-                var m_phone=JSON.parse(localStorage['message_phone']||'[]');
+                var m_name=JSON.parse(localStorage[storage_name]||'[]');
+                var m_phone=JSON.parse(localStorage[storage_phone]||'[]');
                 $scope.names=m_name;
                 $scope.phones=m_phone;
-                var list_number= JSON.parse(localStorage['message_phone'] || '[]');
+                var list_number= JSON.parse(localStorage[storage_phone] || '[]');
                 $scope.number=list_number.length+"人";
             }
         };
