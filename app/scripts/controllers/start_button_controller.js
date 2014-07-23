@@ -9,6 +9,11 @@
             else{
                 $scope.startbutton=true;
             }
+            if(localStorage.getItem("started_activity")!=[]&&localStorage.getItem("started_activity")!=localStorage.getItem("book_partyname"))
+            {
+                $scope.button_able=true;
+            }
+
 //            $scope.startbutton=localStorage.getItem(["activity_start"]||[true]);
 //            localStorage.setItem("activity_start",$scope.startbutton);
             $scope.start=function()
@@ -24,6 +29,7 @@
                 {
                     $scope.startbutton=true;
                     localStorage.setItem("activity_start","activity_over");
+                    localStorage.setItem("started_activity","");
                 }
                 else{
                     return false;
