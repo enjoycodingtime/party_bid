@@ -10,7 +10,7 @@
                 <ul class="list-style-3">
 
 
-                    <li class=" clearfix btn-default" ng-repeat="list in lists" ng-click="gobook(list)" class="{{activity_yellow(activity.activity)}}">
+                    <li  ng-repeat="list in lists" ng-click="gobook(list)" class="{{list==started_list}}" >
                         <p class="pagination-centered">{{list}}</p>
                     </li>
                 </ul>

@@ -15,6 +15,7 @@ angular.module('partyBidApp')
         ];
         var arr1=JSON.parse(localStorage['activitykey']||'[]');
         $scope.lists=arr1;
+        $scope.started_list=localStorage.getItem("started_activity");
       //  $scope.partyname=localStorage.getItem("partyname");
         $scope.createactivity=function(){
             $location.path('/main')

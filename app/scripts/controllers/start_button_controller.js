@@ -23,7 +23,7 @@
                 $scope.startbutton=false;
                 localStorage.setItem("activity_start",$scope.startbutton);
             }
-            $scope.show=function()
+            $scope.end=function()
             {
                 if(confirm("是否要结束报名？"))
                 {
