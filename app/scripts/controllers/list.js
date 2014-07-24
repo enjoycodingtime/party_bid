@@ -22,7 +22,8 @@ angular.module('partyBidApp')
         }
         $scope.gobook=function(book_partyname){
             Partyname1.save_name(book_partyname);
-            $location.path('/book')
+            $location.path('/enter_activity')
         }
+
 
     });

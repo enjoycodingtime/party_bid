@@ -14,7 +14,9 @@ angular.module('partyBidApp')
       'AngularJS',
       'Karma'
     ];
-        if(localStorage.length!=0)
+        localStorage.setItem("started_activity","");
+        var l= JSON.parse(localStorage['activitykey'] || '[]');
+        if(l.length!=0)
         {
             var back_nn=true;
         }
@@ -43,7 +45,7 @@ angular.module('partyBidApp')
                 list_json.unshift(name);
                 localStorage['activitykey']=JSON.stringify(list_json);
                 Partyname1.save_name(name);
-                $location.path('/book')
+                $location.path('/enter_activity')
             }
         }
   });

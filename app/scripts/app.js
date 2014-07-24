@@ -18,9 +18,9 @@ angular
             templateUrl:'views/main.html',
             controller: 'MainCtrl'
         })
-        .when('/book',
+        .when('/enter_activity',
         {
-            templateUrl:"views/book.html",
+            templateUrl:"views/enter_activity.html",
                controller:'BookCtrl'
         })
       .when('/list', {
