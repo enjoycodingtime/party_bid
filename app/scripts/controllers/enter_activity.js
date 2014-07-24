@@ -71,6 +71,7 @@ angular.module('partyBidApp')
             $scope.NGwen=NGwhen;
         }
         else{
+
             var NGwhen="start";
             $scope.NGwen=NGwhen;
             $scope.startbutton=true;
