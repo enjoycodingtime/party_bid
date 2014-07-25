@@ -56,11 +56,13 @@ angular.module('partyBidApp')
             if(confirm("是否要结束报名？"))
             {
                 $scope.startbutton=true;
+
+                $scope.NGwen="start";
                 localStorage.setItem("activity_start","activity_over");
                 localStorage.setItem("started_activity","");
             }
             else{
-                return false;
+                $scope.NGwen=false;
             }
         };
 

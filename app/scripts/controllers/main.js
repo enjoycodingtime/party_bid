@@ -14,7 +14,7 @@ angular.module('partyBidApp')
       'AngularJS',
       'Karma'
     ];
-        localStorage.setItem("started_activity","");
+        // localStorage.setItem("started_activity","");
         var l= JSON.parse(localStorage['activitykey'] || '[]');
         if(l.length!=0)
         {
