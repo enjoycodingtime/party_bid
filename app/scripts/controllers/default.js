@@ -13,7 +13,6 @@ angular.module('partyBidApp')
              var l= JSON.parse(localStorage['activitykey'] || '[]');
              if(l.length==0){
                  $location.path('/main')
-
              }else{
                  $location.path('/list')
              }
