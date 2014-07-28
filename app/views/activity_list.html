@@ -1,0 +1,19 @@
+<div class="jumbotron" >
+    <header>
+        活动列表
+        <div class="header-right">
+            <button class="btn-style btn-4" ng-click="createactivity()">创建活动</button>
+        </div>
+
+    </header>
+    </div>
+            <div id="wrapper" class="wrapper scrollable">
+                <ul class="list-style-3">
+
+
+                    <li  ng-repeat="list in lists" ng-click="gobook(list)" class="{{list==started_list}}"  >
+                        <p class="pagination-centered">{{list}}</p>
+                    </li>
+                </ul>
+            </div>
+　

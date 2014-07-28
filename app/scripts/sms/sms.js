@@ -2,8 +2,8 @@
 //notify_message_received({"messages":[{"create_date":"Tue Jan 15 15:28:44 格林尼治标准时间+0800 2013","message":"jj308","phone":"18733171780"}]})
 var native_accessor = {
     send_sms: function (phone, message) {
-        native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
-       // console.log(phone, message);
+        //native_access.send_sms({"receivers":[{"name":'name', "phone":phone}]}, {"message_content":message});
+        console.log(phone, message);
     },
 
     receive_message: function (json_message) {
@@ -29,7 +29,7 @@ var native_accessor = {
             {
                 if(activity_start=="false")
                 {
-                    var storage_activity=localStorage.getItem("book_partyname");
+                    var storage_activity=localStorage.getItem("party_name");
                     var storage_name=storage_activity+"name";
                     var storage_phone=storage_activity+"phone";
 
@@ -75,7 +75,7 @@ var native_accessor = {
                                 message_phone.push(sign_phone);
                                 localStorage[storage_name]=JSON.stringify(message_name);
                                 localStorage[storage_phone]=JSON.stringify(message_phone);
-                                localStorage['message_activity']=localStorage.getItem("book_partyname");
+                                localStorage['message_activity']=localStorage.getItem("party_name");
                                 var bookScope = angular.element("#book").scope();
                                 bookScope.$apply(function () {
                                     bookScope.refresh();
@@ -89,7 +89,7 @@ var native_accessor = {
                             message_phone.push(sign_phone);
                             localStorage[storage_name]=JSON.stringify(message_name);
                             localStorage[storage_phone]=JSON.stringify(message_phone);
-                            localStorage['message_activity']=localStorage.getItem("book_partyname");
+                            localStorage['message_activity']=localStorage.getItem("party_name");
                             var bookScope = angular.element("#book").scope();
                             bookScope.$apply(function () {
                                 bookScope.refresh();

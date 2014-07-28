@@ -6,27 +6,13 @@
 angular.module('partyBidApp')
     .controller('BookCtrl', function ($scope, $location) {
 
-        $scope.book_partyname=localStorage.getItem("book_partyname");
+        $scope.party_name=localStorage.getItem("party_name");
         $scope.list1=function(){
-            $location.path('/list')
+            $location.path('/activity_list')
         }
-        $scope.delete_activity=function()
-        {
-            $location.path('/list');
-            var delete_item= JSON.parse(localStorage['activitykey']);
-            for(var i=0;i<delete_item.length;i++)
-            {
-                if(delete_item[i]==$scope.book_partyname)
-                {
-                    delete_item.splice(i,1);
-                }
-            }
-            localStorage['activitykey']=JSON.stringify(delete_item);
-        }
-
         $scope.refresh = function () {
-            var book_partyname=localStorage.getItem("book_partyname");
-            var storage_activity=localStorage.getItem("book_partyname");
+            var party_name=localStorage.getItem("party_name");
+            var storage_activity=localStorage.getItem("party_name");
             var storage_name=storage_activity+"name";
             var storage_phone=storage_activity+"phone";
             $scope.startbutton=true;
@@ -37,25 +23,12 @@ angular.module('partyBidApp')
             var list_number= JSON.parse(localStorage[storage_phone] || '[]');
             $scope.number=list_number.length+"人";
 
-//            if(book_partyname==localStorage.getItem("message_activity"))
-//            {
-//                var storage_activity=localStorage.getItem("book_partyname");
-//                var storage_name=storage_activity+"name";
-//                var storage_phone=storage_activity+"phone";
-//                $scope.startbutton=true;
-//                var m_name=JSON.parse(localStorage[storage_name]||'[]');
-//                var m_phone=JSON.parse(localStorage[storage_phone]||'[]');
-//                $scope.names=m_name;
-//                $scope.phones=m_phone;
-//                var list_number= JSON.parse(localStorage[storage_phone] || '[]');
-//                $scope.number=list_number.length+"人";
-//            }
         };
         $scope.refresh();
         $scope.start=function(){
             var NGfalse="false";
             $scope.NGwen=NGfalse;
-            var started_activity=localStorage.getItem("book_partyname");
+            var started_activity=localStorage.getItem("party_name");
             localStorage.setItem("started_activity",started_activity);
             $scope.startbutton=false;
             localStorage.setItem("activity_start",$scope.startbutton);
@@ -76,7 +49,7 @@ angular.module('partyBidApp')
             }
         };
 
-        if(localStorage.getItem("started_activity")==localStorage.getItem("book_partyname"))
+        if(localStorage.getItem("started_activity")==localStorage.getItem("party_name"))
         {
             $scope.startbutton=false;
             var NGwhen="false";
@@ -88,7 +61,7 @@ angular.module('partyBidApp')
             $scope.NGwen=NGwhen;
             $scope.startbutton=true;
         }
-        if(localStorage.getItem("started_activity")!=[]&&localStorage.getItem("started_activity")!=localStorage.getItem("book_partyname"))
+        if(localStorage.getItem("started_activity")!=[]&&localStorage.getItem("started_activity")!=localStorage.getItem("party_name"))
         {
             $scope.button_able=true;
         }

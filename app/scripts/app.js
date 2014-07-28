@@ -14,8 +14,8 @@ angular
         templateUrl: 'views/default.html',
         controller: 'DefaultCtrl'
       })
-        .when('/main',{
-            templateUrl:'views/main.html',
+        .when('/creat_activity',{
+            templateUrl:'views/creat_activity.html',
             controller: 'MainCtrl'
         })
         .when('/enter_activity',
@@ -23,8 +23,8 @@ angular
             templateUrl:"views/enter_activity.html",
                controller:'BookCtrl'
         })
-      .when('/list', {
-        templateUrl: 'views/list.html',
+      .when('/activity_list', {
+        templateUrl: 'views/activity_list.html',
         controller: 'ListCtrl'
       })
 
