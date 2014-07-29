@@ -2,7 +2,7 @@
     <header>
         活动列表
         <div class="header-right">
-            <button class="btn-style btn-4" ng-click="createactivity()">创建活动</button>
+            <button class="btn-style btn-4" ng-click="create_activity()">创建活动</button>
         </div>
 
     </header>
@@ -11,7 +11,7 @@
                 <ul class="list-style-3">
 
 
-                    <li  ng-repeat="list in lists" ng-click="gobook(list)" class="{{list==started_list}}"  >
+                    <li  ng-repeat="list in lists" ng-click="activity_sign_up(list)" class="{{list==started_list}}"  >
                         <p class="pagination-centered">{{list}}</p>
                     </li>
                 </ul>

@@ -1,0 +1,28 @@
+<div class="jumbotron" id="book">
+    <header>
+
+        {{activity_name}}报名{{number}}
+        <div class="header-left">
+            <button class="btn-style btn-4" ng-click="list1()">返回</button>
+
+        </div>
+        <div class="header-right" ng-switch="start_button">
+            <button class="btn-style btn-4" ng-switch-when="start" ng-click="start()" ng-disabled="button_able">开始</button>
+            <button class="btn-style btn-4" ng-switch-when="false" ng-click="end()">结束</button>
+        </div>
+    </header>
+</div>
+
+<div id="wrapper" class="wrapper scrollable" >
+    <table class="table">
+        <tr ng-repeat="(index, name) in names">
+            <td style="width: 50%">{{name}}</td>
+            <td style="width: 50%;text-align: right">{{phones[index]}}</td>
+
+        </tr>
+    </table>
+</div>
+<div>  <footer>
+               <button class="btn btn-style btn-2" style="width: 50%"ng-disabled="">报名</button>
+               <button class="btn btn-style btn-2" style="width: 49%"ng-disabled="" ng-click="">竞价</button>
+        </footer></div>

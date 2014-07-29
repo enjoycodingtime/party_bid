@@ -13,10 +13,8 @@ var native_accessor = {
     },
 
     process_received_message: function (message_json) {
-        var activity_start=localStorage.getItem("activity_start");
-        //console.log(activity_start);
-
-        if( activity_start=="true")
+        var activity_start=Get_Item("activity_start");
+       if( activity_start=="true")
         {
             native_accessor.send_sms(message_json.messages[0].phone,'活动尚未开始，请稍候。');
             //console.log('活动尚未开始！请稍侯');
@@ -24,58 +22,39 @@ var native_accessor = {
         else if(activity_start=="false"){
             JSON.stringify(message_json);
             var message = message_json.messages[0].message.replace(/\s/g, "");
-            //var activity_start=localStorage.getItem("activity_start");
             if(message.search(/bm/i) == 0)
             {
                 if(activity_start=="false")
                 {
-                    var storage_activity=localStorage.getItem("party_name");
+                    var storage_activity=Get_Item("started_activity");
                     var storage_name=storage_activity+"name";
                     var storage_phone=storage_activity+"phone";
-
                     var sign_name;
                     sign_name=message_json.messages[0].message.substr(2, 8);
                     var sign_phone;
                     sign_phone=message_json.messages[0].phone;
-                    var message_name= JSON.parse(localStorage[storage_name] || '[]');
-                    var message_phone= JSON.parse(localStorage[storage_phone] || '[]');
-                    for(var i=0;i<message_phone.length;i++)
-                    {
-                        if(message_phone[i]==sign_phone)
-                        {
-                            var chongfu=1;
-                        }
-                    }
-                    if(chongfu==1)
+                    var message_name= Get_Storage(storage_name);
+                    var message_phone=Get_Storage(storage_phone);
+                    if(Check_Repeat(storage_phone,sign_phone))
                     {
                         //console.log("对不起，你的电话已经报名，报名重复！");
                         native_accessor.send_sms(message_json.messages[0].phone,'对不起，你的电话已经报名，报名重复！');
 
 
                     }
-                    else if(chongfu!=1){
-                        for(var i=0;i<message_name.length;i++)
-                        {
-                            if(message_name[i]==sign_name)
-                            {
-                                var chongfuname=1;
-                            }
-                        }
-                        if(chongfuname==1)
+                    else if(!Check_Repeat(storage_phone,sign_phone)){
+                        if(Check_Repeat(storage_name,sign_name))
                         {
                             for (var p=0;p<message_phone.length;p++) {
-
-                            var chongfu_name = parseInt(localStorage.getItem("chongfu_number")||0);
+                            var name_repeat = parseInt(Get_Item("name_repeat")||0);
 
                              }
-                                chongfu_name=chongfu_name+1;
-                                localStorage.setItem("chongfu_number",chongfu_name);
-                                sign_name=sign_name+"("+chongfu_name+")";
-                                message_name.push(sign_name);
-                                message_phone.push(sign_phone);
-                                localStorage[storage_name]=JSON.stringify(message_name);
-                                localStorage[storage_phone]=JSON.stringify(message_phone);
-                                localStorage['message_activity']=localStorage.getItem("party_name");
+                            name_repeat=name_repeat+1;
+                                Set_Item("name_repeat",name_repeat);
+                                sign_name=sign_name+"("+name_repeat+")";
+                                Push_Array(storage_name,sign_name);
+                                Push_Array(storage_phone,sign_phone);
+                                localStorage['message_activity']=Get_Item("started_activity");
                                 var bookScope = angular.element("#book").scope();
                                 bookScope.$apply(function () {
                                     bookScope.refresh();
@@ -85,11 +64,9 @@ var native_accessor = {
 
                         }
                         else{
-                            message_name.push(sign_name);
-                            message_phone.push(sign_phone);
-                            localStorage[storage_name]=JSON.stringify(message_name);
-                            localStorage[storage_phone]=JSON.stringify(message_phone);
-                            localStorage['message_activity']=localStorage.getItem("party_name");
+                            Push_Array(storage_name,sign_name);
+                            Push_Array(storage_phone,sign_phone);
+                            localStorage['message_activity']=Get_Item("started_activity");
                             var bookScope = angular.element("#book").scope();
                             bookScope.$apply(function () {
                                 bookScope.refresh();

@@ -16,16 +16,16 @@ angular
       })
         .when('/creat_activity',{
             templateUrl:'views/creat_activity.html',
-            controller: 'MainCtrl'
+            controller: 'creat_activity_controller'
         })
-        .when('/enter_activity',
+        .when('/activity_sign_up:name',
         {
-            templateUrl:"views/enter_activity.html",
-               controller:'BookCtrl'
+            templateUrl:"views/activity_sign_up.html",
+               controller:'activity_sign_up_controller'
         })
       .when('/activity_list', {
         templateUrl: 'views/activity_list.html',
-        controller: 'ListCtrl'
+        controller: 'activity_list_controller'
       })
 
       .otherwise({

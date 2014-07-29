@@ -7,16 +7,15 @@
 'use strict';
 
 angular.module('partyBidApp')
-    .controller('ListCtrl', function ($scope, $location) {
-        var arr1=JSON.parse(localStorage['activity_list']||'[]');
-        $scope.lists=arr1;
-        $scope.started_list=localStorage.getItem("started_activity");
-        $scope.createactivity=function(){
+    .controller('activity_list_controller', function ($scope, $location) {
+        $scope.lists=Get_Storage('activity_list');
+        $scope.started_list=Get_Item("started_activity");
+        $scope.create_activity=function(){
             $location.path('/creat_activity')
         }
-        $scope.gobook=function(party_name){
+        $scope.activity_sign_up=function(party_name){
 
-            Party.save_name(party_name);
-            $location.path('/enter_activity')
+            //Party.save_name(party_name);
+            $location.path('/activity_sign_up'+party_name)
         }
     });
