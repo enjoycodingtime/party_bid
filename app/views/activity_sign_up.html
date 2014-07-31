@@ -1,9 +1,9 @@
-<div class="jumbotron" id="book">
+<div class="jumbotron" id="activity_sign-up">
     <header>
 
-        {{activity_name}}报名{{number}}
+        报名{{sign_up_number}}
         <div class="header-left">
-            <button class="btn-style btn-4" ng-click="list1()">返回</button>
+            <button class="btn-style btn-4" ng-click="back_list()">返回</button>
 
         </div>
         <div class="header-right" ng-switch="start_button">
@@ -23,6 +23,6 @@
     </table>
 </div>
 <div>  <footer>
-               <button class="btn btn-style btn-2" style="width: 50%"ng-disabled="">报名</button>
-               <button class="btn btn-style btn-2" style="width: 49%"ng-disabled="" ng-click="">竞价</button>
+               <button class="btn btn-style btn-2" style="width: 50%"ng-disabled="true">报名</button>
+               <button class="btn btn-style btn-2" style="width: 49%" ng-click="bid_list()">竞价</button>
         </footer></div>

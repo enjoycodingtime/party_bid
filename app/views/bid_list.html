@@ -1,31 +1,28 @@
 <div class="jumbotron" id="book">
     <header>
-
-        竞价
+       竞价
         <div class="header-left">
-            <button class="btn-style btn-4" ng-click="list1()">返回</button>
+            <button class="btn-style btn-4" ng-click="back_list()">返回</button>
 
         </div>
-        <div class="header-right" ng-switch="NGwen">
-            <button class="btn-style btn-4" ng-switch-when="start" ng-click="start()" ng-disabled="button_able">开始</button>
-            <button class="btn-style btn-4" ng-switch-when="false" ng-click="false11()">结束</button>
+        <div class="header-right">
+            <button class="btn-style btn-4" ng-click="creat_bid_sign_up()" ng-disabled="button_able">开始</button>
         </div>
     </header>
 </div>
 
-<div id="wrapper" class="wrapper scrollable" >
-    <table class="table">
-        <!--<tr ng-repeat="(index, name) in names">-->
-            <!--<td style="width: 50%">{{name}}</td>-->
-            <!--<td style="width: 50%;text-align: right">{{phones[index]}}</td>-->
+<div id="wrapper" class="wrapper scrollable">
+    <ul class="list-style-3">
 
-        <!--</tr>-->
-    </table>
 
+        <li  ng-repeat="list in bid_lists" ng-click="bid_sign_up(list)" class="{{list==started_list}}">
+            <p class="pagination-centered">{{list}}</p>
+        </li>
+    </ul>
 </div>
 
 
 <div>  <footer>
-    <button class="btn btn-style btn-2" style="width: 50%"ng-disabled="">报名</button>
-    <button class="btn btn-style btn-2" style="width: 49%"ng-disabled="">竞价</button>
+    <button class="btn btn-style btn-2" style="width: 50%" ng-click="activity_sign_up()">报名</button>
+    <button class="btn btn-style btn-2" style="width: 49%"ng-disabled="true">竞价</button>
 </footer></div>

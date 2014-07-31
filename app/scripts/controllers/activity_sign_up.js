@@ -6,21 +6,34 @@
 angular.module('partyBidApp')
     .controller('activity_sign_up_controller', function ($scope, $location,$routeParams) {
         $scope.activity_name=$routeParams.name;
-        //$scope.activity_name=$scope;
         $scope.party_name=Get_Item("party_name");
-        $scope.list1=function(){
+        Set_Item("activity_start",Get_activity_start("activity_start"));//
+        $scope.back_list=function(){
             $location.path('/activity_list')
-        }
+        };
 
         $scope.refresh = function () {
             var storage_name=$scope.activity_name+"name";
             var storage_phone=$scope.activity_name+"phone";
             $scope.startbutton=true;
-            var name=Get_Storage(storage_name);
-            var phone=Get_Storage(storage_phone);
-            $scope.names=name;
-            $scope.phones=phone;//
-            $scope.number=phone.length+"人";
+            $scope.names=Get_Storage(storage_name);
+            $scope.phones=Get_Storage(storage_phone);
+            $scope.sign_up_number=Get_Storage(storage_name).length+"人";
+            if(Get_Item("started_activity")==$scope.activity_name)
+            {
+                $scope.start_button="false";
+            }
+            else{
+                $scope.start_button="start";
+            }
+            if(Get_Item("started_activity")!=[]&&Get_Item("started_activity")!=$scope.activity_name)
+            {
+                $scope.button_able=true;
+            }
+
+            else{
+                $scope.button_able=false;
+            }
         };
         $scope.refresh();
 
@@ -40,28 +53,14 @@ angular.module('partyBidApp')
                 $scope.start_button="start";
                 Set_Item("activity_start","activity_over");
                 Set_Item("started_activity","");
+                $location.path('/bid_list'+$scope.activity_name)
             }
             else{
                 $scope.start_button=false;
-            }
+            };
         };
-
-        if(Get_Item("started_activity")==$scope.activity_name)
-        {
-            $scope.start_button="false";
+        $scope.bid_list=function(){
+            $location.path('/bid_list'+$scope.activity_name);
+           // $location.path('/bid_list');
         }
-        else{
-            $scope.start_button="start";
-            }
-        if(Get_Item("started_activity")!=[]&&Get_Item("started_activity")!=$scope.activity_name)
-        {
-            $scope.button_able=true;
-        }
-
-        else{
-            $scope.button_able=false;
-        }
-        Set_Item("activity_start",$scope.startbutton);
-
-
     });

@@ -23,10 +23,19 @@ angular
             templateUrl:"views/activity_sign_up.html",
                controller:'activity_sign_up_controller'
         })
+
       .when('/activity_list', {
         templateUrl: 'views/activity_list.html',
         controller: 'activity_list_controller'
       })
+      .when('/bid_list:name',{
+            templateUrl:'views/bid_list.html',
+            controller:'bid_list_controller'
+        })
+        .when('/bid_sign_up:bid_sign_up_name',{
+            templateUrl:'views/bid_sign_up.html',
+            controller:'bid_sign_up_controller'
+        })
 
       .otherwise({
         redirectTo: '/'
