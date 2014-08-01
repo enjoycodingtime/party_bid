@@ -7,7 +7,7 @@ angular.module('partyBidApp')
     .controller('bid_list_controller', function ($scope, $location,$routeParams){
 
         $scope.activity_name=$routeParams.name;
-        console.log($scope.activity_name);
+
         $scope.bid_lists=Get_Storage($routeParams.name+"bid_list");
         $scope.started_bid=Get_Item("started_bid");
         $scope.activity_sign_up=function(){

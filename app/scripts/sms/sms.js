@@ -70,6 +70,8 @@ var native_accessor = {
 
         else if(message.search(/jj/i) == 0){
 //            console.log("竞价成功！")
+            var message=Sms.bid_response(message_json.messages[0].phone,message_json.messages[0].message);
+            native_accessor.send_sms(message_json.messages[0].phone,message);
 
         }
 
