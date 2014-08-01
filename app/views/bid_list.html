@@ -15,7 +15,7 @@
     <ul class="list-style-3">
 
 
-        <li  ng-repeat="list in bid_lists" ng-click="bid_sign_up(list)" class="{{list==started_list}}">
+        <li  ng-repeat="list in bid_lists" ng-click="bid_sign_up(list)" class="{{started_bid==list}}">
             <p class="pagination-centered">{{list}}</p>
         </li>
     </ul>

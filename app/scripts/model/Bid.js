@@ -13,3 +13,22 @@ Bid.get_bid=function(key){
     var bid_list= JSON.parse(localStorage[key]);
     return bid_list[0];
 };
+Bid.creat_bid=function(activity_name){
+    Bid.save_bid(activity_name+"bid_list");
+    var bid_name=Bid.get_bid(activity_name+"bid_list");
+    Set_Item("started_bid",bid_name);
+    Set_Item("started_bid_activity",activity_name);
+    return bid_name;
+};
+Bid.end_bid=function(){
+    Set_Item("started_bid","");
+    Set_Item("started_bid_activity","");
+};
+Bid.judge_color=function(bid_name){
+    if(Get_Item('started_bid')==bid_name){
+        return false;
+    }
+    else{
+        return true;
+    }
+};

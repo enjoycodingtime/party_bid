@@ -23,7 +23,7 @@ angular.module('partyBidApp')
             else
             {
                 Party.save_activity(name);
-                $location.path('/activity_sign_up'+name);
+                $location.path('/activity_sign_up/'+name);
 
             }
         }

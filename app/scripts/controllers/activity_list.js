@@ -10,6 +10,7 @@ angular.module('partyBidApp')
     .controller('activity_list_controller', function ($scope, $location) {
         $scope.lists=Get_Storage('activity_list');
         $scope.started_list=Get_Item("started_activity");
+        $scope.started_bid_activity=Get_Item("started_bid_activity");
         $scope.create_activity=function(){
             $location.path('/creat_activity')
         }
