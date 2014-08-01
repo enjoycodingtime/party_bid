@@ -53,14 +53,14 @@ angular.module('partyBidApp')
                 $scope.start_button="start";
                 Set_Item("activity_start","activity_over");
                 Set_Item("started_activity","");
-                $location.path('/bid_list'+$scope.activity_name)
+                $location.path('/bid_list/'+$scope.activity_name)
             }
             else{
                 $scope.start_button=false;
             };
         };
         $scope.bid_list=function(){
-            $location.path('/bid_list'+$scope.activity_name);
+            $location.path('/bid_list/'+$scope.activity_name);
            // $location.path('/bid_list');
         }
     });
