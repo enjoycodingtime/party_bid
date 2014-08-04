@@ -1,7 +1,7 @@
 <div class="jumbotron" id="bid_sign_up">
     <header>
 
-        {{bid_sign_up_name}}
+        {{bid_sign_up_name}}{{sign_up_number}}
         <div class="header-left">
             <button class="btn-style btn-4" ng-click="back_bid_list()">返回</button>
 
@@ -13,13 +13,14 @@
 </div>
 
 <div id="wrapper" class="wrapper scrollable" >
-    <table class="table">
-        <tr ng-repeat="information in informations">
-            <td style="width: 50%">{{information.name}}</td>
-            <td style="width: 50%;text-align: right">{{information.phone}}</td>
-
-        </tr>
-    </table>
+    <table class="table-condensed">
+        <tr ng-repeat="(index,information) in informations">
+            <td>{{index+1}}:</td>
+            <td>
+            <table>
+                <tr><td>{{information.name}}</td></tr>
+                <tr><td>{{information.phone}}</td></tr>
+    </table></td></tr></table>
 </div>
 
 
