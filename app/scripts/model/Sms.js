@@ -15,7 +15,7 @@ Sms.add_information=function(storage_name,sign_name,storage_phone,sign_phone){
 };
 Sms.check_bid_number=function(phone){
     //Get_Item("started_activity");
-    var phone_list= Get_Storage(Get_Item("started_activity")+'phone');
+    var phone_list= Get_Storage(Get_Item("message_activity")+'phone');
     console.log(phone_list);
     for(var i=0;i<phone_list.length;i++)
     {
@@ -45,6 +45,12 @@ Sms.bid_response=function(phone,message){
 //          var price_list=Get_Storage(Get_Item('started_bid')+'price');
           Push_Array(Get_Item('started_bid')+'price',price);
           var name=Sms.find_name(phone);
+          var information={
+              name:name,
+              phone:phone,
+              price:price
+          };
+          Push_Array(Get_Item('message_activity')+Get_Item('started_bid')+"information",information);
           console.log('name:'+name+'phone'+phone+'price'+price);
           Sign_up_Bid = angular.element("#bid_sign_up").scope();
           Sign_up_Bid.$apply(function () {
@@ -63,8 +69,8 @@ Sms.bid_response=function(phone,message){
 
 };
 Sms.find_name=function(phone){
-    var phone_list=Get_Storage(Get_Item('started_activity')+'phone');
-    var name_list=Get_Storage(Get_Item('started_activity')+'name');
+    var phone_list=Get_Storage(Get_Item('message_activity')+'phone');
+    var name_list=Get_Storage(Get_Item('message_activity')+'name');
     for(var i=0;i<phone_list.length;i++)
     {
         if(phone_list[i]==phone)

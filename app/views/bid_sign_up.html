@@ -14,9 +14,9 @@
 
 <div id="wrapper" class="wrapper scrollable" >
     <table class="table">
-        <tr ng-repeat="(index, name) in names">
-            <td style="width: 50%">{{name}}</td>
-            <td style="width: 50%;text-align: right">{{phones[index]}}</td>
+        <tr ng-repeat="information in informations">
+            <td style="width: 50%">{{information.name}}</td>
+            <td style="width: 50%;text-align: right">{{information.phone}}</td>
 
         </tr>
     </table>
