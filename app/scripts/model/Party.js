@@ -44,5 +44,10 @@ function Push_Array(key,value){
     var array_list= JSON.parse(localStorage[key] || '[]');
     array_list.unshift(value);
     localStorage[key]=JSON.stringify(array_list);
-}
+};
+function Push_Array1(key,value){
+    var array_list= JSON.parse(localStorage[key] || '[]');
+    array_list.push(value);
+    localStorage[key]=JSON.stringify(array_list);
+};
 

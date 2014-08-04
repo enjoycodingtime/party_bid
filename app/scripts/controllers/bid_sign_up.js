@@ -12,8 +12,9 @@ angular.module('partyBidApp')
         $scope.button_disable=Bid.judge_color($scope.bid_sign_up_name);
         $scope.refresh = function () {
             $scope.informations=Get_Storage(Get_Item('message_activity')+Get_Item('started_bid')+"information");
-            $scope.sign_up_number='('+JSON.parse(Get_Item(Get_Item('message_activity')+Get_Item('started_bid')+"information")).length+"人"+')';
+            $scope.sign_up_number='('+JSON.parse(localStorage[Get_Item('message_activity')+Get_Item('started_bid')+"information"] || '[]').length+"人"+')';
            };
+
         $scope.refresh();
         $scope.back_bid_list=function(){
             $location.path('/bid_list/'+$scope.activity_name)
