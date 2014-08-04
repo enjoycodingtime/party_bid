@@ -7,7 +7,7 @@ angular.module('partyBidApp')
     .controller('bid_sign_up_controller', function ($scope, $location,$routeParams){
         $scope.bid_sign_up_name=$routeParams.bid_sign_up_name;
         $scope.activity_name=$routeParams.activity_name;
-        $scope.button_disable=$routeParams.button_able;
+        //$scope.button_disable=$routeParams.button_able;
 
         $scope.button_disable=Bid.judge_color($scope.bid_sign_up_name);
         $scope.refresh = function () {

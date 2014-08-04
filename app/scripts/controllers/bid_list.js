@@ -23,6 +23,7 @@ angular.module('partyBidApp')
         };
         $scope.bid_sign_up=function(name){
             $location.path('/bid_sign_up/'+name+'/'+($scope.activity_name)+'/'+true);
+
         };
 
 
