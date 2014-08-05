@@ -9,9 +9,13 @@ Sms.add_information=function(storage_name,sign_name,storage_phone,sign_phone){
     Push_Array(storage_phone, sign_phone);
     localStorage['message_activity'] = Get_Item("started_activity");
     Sign_up_Scope = angular.element("#activity_sign-up").scope();
-    Sign_up_Scope.$apply(function () {
-        Sign_up_Scope.refresh();
-    });
+    if(Sign_up_Scope!=undefined){
+        Sign_up_Scope.$apply(function () {
+            Sign_up_Scope.refresh();
+        });
+    }
+
+
 };
 Sms.check_bid_number=function(phone){
     //Get_Item("started_activity");

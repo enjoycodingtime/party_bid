@@ -5,7 +5,6 @@
 
 angular.module('partyBidApp')
     .controller('bid_list_controller', function ($scope, $location,$routeParams){
-
         $scope.activity_name=$routeParams.name;
         $scope.button_disable=Bid.judge_start_button();
         $scope.bid_lists=Get_Storage($routeParams.name+"bid_list");

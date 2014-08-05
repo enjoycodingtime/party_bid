@@ -8,11 +8,10 @@ angular.module('partyBidApp')
         $scope.bid_sign_up_name=$routeParams.bid_sign_up_name;
         $scope.activity_name=$routeParams.activity_name;
         //$scope.button_disable=$routeParams.button_able;
-
         $scope.button_disable=Bid.judge_color($scope.bid_sign_up_name);
         $scope.refresh = function () {
-            $scope.informations=Get_Storage(Get_Item('message_activity')+Get_Item('started_bid')+"information");
-            $scope.sign_up_number='('+JSON.parse(localStorage[Get_Item('message_activity')+Get_Item('started_bid')+"information"] || '[]').length+"人"+')';
+            $scope.informations=Get_Storage($scope.activity_name+$scope.bid_sign_up_name+"information");
+            $scope.sign_up_number='('+JSON.parse(localStorage[$scope.activity_name+$scope.bid_sign_up_name+"information"] || '[]').length+"人"+')';
            };
 
         $scope.refresh();
