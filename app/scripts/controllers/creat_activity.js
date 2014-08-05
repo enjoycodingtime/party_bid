@@ -24,6 +24,7 @@ angular.module('partyBidApp')
             {
                 Party.save_activity(name);
                 $location.path('/activity_sign_up/'+name);
+                Set_Item("activity_start","true");
 
             }
         }

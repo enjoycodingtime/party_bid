@@ -19,14 +19,14 @@ angular.module('partyBidApp')
             $scope.names=Get_Storage(storage_name);
             $scope.phones=Get_Storage(storage_phone);
             $scope.sign_up_number=Get_Storage(storage_name).length+"人";
-            if(Get_Item("started_activity")==$scope.activity_name)
+            if(Get_Item("started_activity")==$scope.activity_name||Get_Item($scope.activity_name+"activity_start")=='activity_over')
             {
                 $scope.start_button="false";
             }
             else{
                 $scope.start_button="start";
             }
-            if(Get_Item("started_activity")!=[]&&Get_Item("started_activity")!=$scope.activity_name)
+            if(Get_Item("started_activity")!=[]&&Get_Item("started_activity")!=$scope.activity_name||Get_Item($scope.activity_name+"activity_start")=='activity_over')
             {
                 $scope.button_able=true;
             }
@@ -50,9 +50,10 @@ angular.module('partyBidApp')
             {
                 $scope.startbutton=true;
 
-                $scope.start_button="start";
-                Set_Item("activity_start","activity_over");
+                $scope.start_button="false";
+                Set_Item($scope.activity_name+"activity_start","activity_over");
                 Set_Item("started_activity","");
+                Set_Item("activity_start","activity_over");
                 $location.path('/bid_list/'+$scope.activity_name)
             }
             else{

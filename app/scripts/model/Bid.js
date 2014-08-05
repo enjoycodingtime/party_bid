@@ -33,7 +33,7 @@ Bid.judge_color=function(bid_name){
     }
 };
 Bid.judge_start_button=function(){
-  if(Get_Item('started_bid')=='') {
+  if(Get_Item('started_bid')==''||Get_Item('started_bid')==null) {
       return false;
   }
     else{

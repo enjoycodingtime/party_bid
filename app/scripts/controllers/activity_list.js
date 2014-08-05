@@ -11,6 +11,7 @@ angular.module('partyBidApp')
         $scope.lists=Get_Storage('activity_list');
         $scope.started_list=Get_Item("started_activity");
         $scope.started_bid_activity=Get_Item("started_bid_activity");
+        $scope.button_abled=Bid.judge_start_button();
         $scope.create_activity=function(){
             $location.path('/creat_activity')
         }
