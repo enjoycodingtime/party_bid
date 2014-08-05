@@ -23,7 +23,7 @@ angular.module('partyBidApp')
             {
                 $scope.button_disable=true;
                 Bid.end_bid();
-                $location.path('/bid_result/'+$scope.activity_name);
+                $location.path('/bid_result/'+$scope.activity_name+'/'+$scope.bid_sign_up_name);
             }
             else{
 

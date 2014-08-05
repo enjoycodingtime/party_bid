@@ -36,11 +36,11 @@ angular
             templateUrl:'views/bid_sign_up.html',
             controller:'bid_sign_up_controller'
         })
-        .when('/bid_result/:name',{
+        .when('/bid_result/:activity_name/:bid_sign_up_name',{
             templateUrl:'views/bid_result.html',
             controller:'bid_result_controller'
         })
-        .when('/bid_statistics/:name',{
+        .when('/bid_statistics/:activity_name/:bid_sign_up_name',{
             templateUrl:'views/bid_statistics.html',
             controller:'bid_statistics_controller'
         })

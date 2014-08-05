@@ -10,7 +10,7 @@ angular.module('partyBidApp')
             $location.path('/bid_list/'+$scope.activity_name)
         };
         $scope.bid_result=function(){
-            $location.path('/bid_result/'+$scope.activity_name);
+            $location.path('/bid_result/'+$scope.activity_name+'/'+$routeParams.bid_sign_up_name);
         };
 
 
