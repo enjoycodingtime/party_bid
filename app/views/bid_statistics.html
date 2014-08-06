@@ -10,18 +10,19 @@
         </div>
     </header>
 </div>
+<div id="wrapper" class="wrapper scrollable" >
+    <table class="table">
+        <tr ng-repeat="result in bid_statistics" >
+            <td style="width: 50%">{{result.price}}</td>
+            <td style="width: 50%;text-align: right">{{result.count}} 人</td>
 
-<!--<div id="wrapper" class="wrapper scrollable">-->
-<!--<ul class="list-style-3">-->
-
-
-<!--<li  ng-repeat="list in bid_lists" ng-click="bid_sign_up(list)" class="{{started_bid==list}}">-->
-<!--<p class="pagination-centered">{{list}}</p>-->
-<!--</li>-->
-<!--</ul>-->
-<!--</div>-->
-
-
+        </tr>
+    </table>
+</div>
 <div>  <footer>
+    竞价结果:
+    name:{{win.name}}
+    phone:{{win.phone}}
+    price:{{win.price}}
 
 </footer></div>

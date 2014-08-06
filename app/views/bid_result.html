@@ -1,6 +1,6 @@
-<div class="jumbotron" id="book">
+<div class="jumbotron" >
     <header>
-        竞价
+        {{bid_sign_up_name}}{{sign_up_number}}
         <div class="header-left">
             <button class="btn-style btn-4" ng-click="back_list()">返回</button>
 
@@ -21,9 +21,30 @@
                     <tr><td>电话：{{information.phone}}</td></tr>
                 </table></td><td>price:{{information.price}}</td></tr></table>
 </div>
+<a href="#myModal" role="button" class="btn" data-toggle="modal">查看演示案例</a>
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">竞价结果</h3>
+    </div>
+    <div class="modal-body">
+        <p>姓名：{{win.name}}</p>
+        <p>电话：{{win.phone}}</p>
+        <p>价格：{{win.price}}</p>
+        <p>{{win.information}}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    </div>
+</div>
 
 
 <div>  <footer>
+    竞价结果:
+    name:{{win.name}}
+    phone:{{win.phone}}
+    price:{{win.price}}
 
 </footer></div>

@@ -61,12 +61,12 @@ Sms.bid_response=function(phone,message){
           else{
               var price= message.substr(2, 8);
 
-              Push_Array1(Get_Item('started_bid')+'price',price);
+              //Push_Array1(Get_Item('started_bid')+'price',price);
               var name=Sms.find_name(phone);
               var information={
                   name:name,
                   phone:phone,
-                  price:price
+                  price:parseInt(price)
               };
               Push_Array1(Get_Item('message_activity')+Get_Item('started_bid')+"information",information);
               Sign_up_Bid = angular.element("#bid_sign_up").scope();

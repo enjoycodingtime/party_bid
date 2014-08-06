@@ -44,22 +44,28 @@ Bid.judge_start_button=function(){
       return true;
   }
 };
-var by = function(name){
-    return function(o, p){
-        var a, b;
-        if (typeof o === "object" && typeof p === "object" && o && p) {
-            a = o[name];
-            b = p[name];
-            if (a === b) {
-                return 0;
-            }
-            if (typeof a === typeof b) {
-                return a < b ? -1 : 1;
-            }
-            return typeof a < typeof b ? -1 : 1;
-        }
-        else {
-            throw ("error");
-        }
+Bid.sort_result_information=function(activity_name,bid_name){
+    var result_information=Get_Storage(activity_name+bid_name+'information');
+    return _.sortBy(result_information,'price');
+};
+Bid.win_person=function(array){
+   var group= _.groupBy(array,'price');
+    Bid.statistics(group);
+   var win_price= _.find(group,function(num){
+       return num.length==1;
+   });
+    if(win_price==undefined){
+        win_price={information:'竞价失败！'};
+        return win_price;
     }
+    else{
+        win_price[0].information='竞价成功！';
+        return win_price[0];
+    }
+};
+Bid.statistics=function(argument){
+    var result = _.map(argument, function(value,key ){
+        return {"price": key, "count": value.length}
+    });
+    localStorage['bid_result'] = JSON.stringify(result);
 };
