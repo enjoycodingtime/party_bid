@@ -14,7 +14,7 @@ angular.module('partyBidApp')
             $location.path('/bid_list/'+$scope.activity_name)
         };
         $scope.bid_statistics=function(){
-            $location.path('/bid_statistics/'+$scope.activity_name+'/'+$routeParams.bid_sign_up_name)
+            $location.path('/bid_statistics/'+$routeParams.activity_name+'/'+$routeParams.bid_sign_up_name)
         };
         $('#myModal').modal("show");
         setTimeout(function(){
