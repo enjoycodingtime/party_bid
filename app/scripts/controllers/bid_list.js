@@ -8,7 +8,7 @@ angular.module('partyBidApp')
         $scope.activity_name=$routeParams.name;
         $scope.button_disable=Bid.judge_start_button();
         $scope.bid_lists=Get_Storage($routeParams.name+"bid_list");
-        $scope.started_bid=Get_Item("started_bid");
+        $scope.started_bid=Get_Item("message_activity")+Get_Item("started_bid");
         $scope.activity_sign_up=function(){
                         $location.path('/activity_sign_up/'+$routeParams.name);
         };

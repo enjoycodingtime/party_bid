@@ -2,7 +2,7 @@
     <header>
        竞价
         <div class="header-left">
-            <button class="btn-style btn-4" ng-click="back_list()">返回</button>
+            <button class="btn btn-style btn-4" ng-click="back_list()">返回</button>
 
         </div>
         <div class="header-right">
@@ -13,16 +13,13 @@
 
 <div id="wrapper" class="wrapper scrollable">
     <ul class="list-style-3">
-
-
-        <li  ng-repeat="list in bid_lists" ng-click="bid_sign_up(list)" class="{{started_bid==list}}">
+        <li  ng-repeat="list in bid_lists" ng-click="bid_sign_up(list)" class="{{started_bid==activity_name+list}}">
             <p class="pagination-centered">{{list}}</p>
         </li>
     </ul>
 </div>
 
-
 <div>  <footer>
-    <button class="btn btn-style btn-2" style="width: 50%" ng-click="activity_sign_up()">报名</button>
-    <button class="btn btn-style btn-2" style="width: 49%"ng-disabled="true">竞价</button>
+    <button class="btn btn-style btn-4" style="width: 50%" ng-click="activity_sign_up()">报名</button>
+    <button class="btn btn-style btn-4" style="width: 49%"ng-disabled="true">竞价</button>
 </footer></div>

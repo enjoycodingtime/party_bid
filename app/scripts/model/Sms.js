@@ -60,29 +60,28 @@ Sms.bid_response=function(phone,message){
 
           else{
               var price= message.substr(2, 8);
-
-              //Push_Array1(Get_Item('started_bid')+'price',price);
-              var name=Sms.find_name(phone);
-              var information={
-                  name:name,
-                  phone:phone,
-                  price:parseInt(price)
-              };
-              Push_Array1(Get_Item('message_activity')+Get_Item('started_bid')+"information",information);
-              Sign_up_Bid = angular.element("#bid_sign_up").scope();
-              if(Sign_up_Bid!=undefined){
-                  Sign_up_Bid.$apply(function () {
-                      Sign_up_Bid.refresh();
-                  });
-              };
-              return '恭喜！您已出价成功';
+              if(isNaN(parseInt(price))){
+                  return '价格格式不正确！'
+              }
+              else{
+                  //Push_Array1(Get_Item('started_bid')+'price',price);
+                  var name=Sms.find_name(phone);
+                  var information={
+                      name:name,
+                      phone:phone,
+                      price:parseInt(price)
+                  };
+                  Push_Array1(Get_Item('message_activity')+Get_Item('started_bid')+"information",information);
+                  Sign_up_Bid = angular.element("#bid_sign_up").scope();
+                  if(Sign_up_Bid!=undefined){
+                      Sign_up_Bid.$apply(function () {
+                          Sign_up_Bid.refresh();
+                      });
+                  };
+                  return '恭喜！您已出价成功';
+              }
           }
-
-
-
       }
-
-
 }
 
 };
