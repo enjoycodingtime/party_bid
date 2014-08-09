@@ -50,4 +50,12 @@ function Push_Array1(key,value){
     array_list.push(value);
     localStorage[key]=JSON.stringify(array_list);
 };
+Party.activity_number=function(){
+    var activity_number=Get_Storage('activity_list');
+    if(activity_number.length!=0)
+    {
+        return true;
+    }
+    return false;
+};
 

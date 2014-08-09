@@ -1,14 +1,12 @@
 <div class="jumbotron">
     <header>
         创建活动
-
         <div class="header-left">
-            <button class="btn btn-style btn-4" ng-click="activity_list()" ng-show="activity_number()">返回</button>
+            <button class="btn btn-style btn-4" ng-click="activity_list()" ng-show="{{activity_number}}">返回</button>
         </div>
-
-
     </header>
-    </div>
+</div>
+
 <div class="wrapper scrollable">
    请输入活动的名称： <input class="input-full" type="text" ng-model="name" placeholder="活动名字">
     <div style="color: red">
@@ -16,8 +14,6 @@
     </div>
 </div>
 
-
 <div><footer>
     <button class="btn btn-style btn-2" ng-click="creat_activity(name)" ng-disabled="!name" style="">创建活动</button>
-
 </footer></div>

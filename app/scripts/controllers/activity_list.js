@@ -14,7 +14,7 @@ angular.module('partyBidApp')
         $scope.button_abled=Bid.judge_start_button();
         $scope.create_activity=function(){
             $location.path('/creat_activity')
-        }
+        };
         $scope.activity_sign_up=function(party_name){
 
             //Party.save_name(party_name);

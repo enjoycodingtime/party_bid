@@ -1,15 +1,7 @@
 'use strict';
 angular.module('partyBidApp')
   .controller('creat_activity_controller', function ($scope, $location) {
-        $scope.activity_number=function()
-        {
-            var activity_number=Get_Storage('activity_list');
-                if(activity_number.length!=0)
-            {
-                return true;
-            }
-                return false;
-        };
+        $scope.activity_number=Party.activity_number();
         $scope.activity_list=function(){
             $location.path('/activity_list')
         };

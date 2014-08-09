@@ -60,7 +60,7 @@ Sms.bid_response=function(phone,message){
 
           else{
               var price= message.substr(2, 8);
-              if(isNaN(parseInt(price))){
+              if(isNaN(parseInt(price))||parseInt(price)<=0){
                   return '价格格式不正确！'
               }
               else{
