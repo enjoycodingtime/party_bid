@@ -5,7 +5,8 @@
  * Created by zhangke on 14-7-15.
  */
 function Party(name, status) {
-   
+    this.name = name;
+    this.status = status;
 }
 
 
