@@ -5,7 +5,6 @@ angular.module('partyBidApp')
         $scope.activity_list=function(){
             $location.path('/activity_list')
         };
-
         $scope.creat_activity=function(name){
 
             if(Check_Repeat("activity_list",name))

@@ -4,14 +4,27 @@
 /**
  * Created by zhangke on 14-7-15.
  */
-function Party() {
+function Party(name, status) {
+    this.name = name;
+    this.status = status;
 }
+
+
 
 Party.save_activity=function(name){
     var activity_list= JSON.parse(localStorage['activity_list'] || '[]');
     activity_list.unshift(name);
     localStorage['activity_list']=JSON.stringify(activity_list);
 };
+
+Party.get_storage = function() {
+
+};
+
+Party.prototype.save = function() {
+
+};
+
 function Get_Storage(storage_name){
     return JSON.parse(localStorage[storage_name] || '[]');
 }
