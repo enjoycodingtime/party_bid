@@ -21,3 +21,4 @@ angular.module('partyBidApp')
                 $('#myModal').modal('hide')}
             ,3000);
     });
+

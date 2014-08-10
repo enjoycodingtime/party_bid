@@ -4,27 +4,29 @@
 /**
  * Created by zhangke on 14-7-15.
  */
-function Party(name, status) {
+function Activity(name, status) {
     this.name = name;
     this.status = status;
+
 }
+// var party = new Activity(name, status);
+// party.create();
 
 
+Activity.prototype.creat_activity = function() {
+    var save_object = {} ;
+    save_object.name = this.name;
+    save_object.status = this.status;
+    localStorage.setItem('aa', save_object);
 
-Party.save_activity=function(name){
+    localStorage.setItem('aa', JSON.stringify(this));
+
+};
+Activity.save_activity=function(name){
     var activity_list= JSON.parse(localStorage['activity_list'] || '[]');
     activity_list.unshift(name);
     localStorage['activity_list']=JSON.stringify(activity_list);
 };
-
-Party.get_storage = function() {
-
-};
-
-Party.prototype.save = function() {
-
-};
-
 function Get_Storage(storage_name){
     return JSON.parse(localStorage[storage_name] || '[]');
 }
@@ -63,7 +65,7 @@ function Push_Array1(key,value){
     array_list.push(value);
     localStorage[key]=JSON.stringify(array_list);
 };
-Party.activity_number=function(){
+Activity.activity_number=function(){
     var activity_number=Get_Storage('activity_list');
     if(activity_number.length!=0)
     {
