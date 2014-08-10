@@ -13,9 +13,11 @@ angular.module('partyBidApp')
             }
             else
             {
-                Activity.save_activity(name);
+                var activity = new Activity(name,'created');
+                activity.creat_activity();
+                //Activity.save_activity(name);
                 $location.path('/activity_sign_up/'+name);
-                Set_Item("activity_start","true");
+               // Set_Item("activity_start","true");
 
             }
         }
