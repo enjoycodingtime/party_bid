@@ -24,32 +24,23 @@ angular.module('partyBidApp')
         $scope.refresh();
 
         $scope.start=function(){
+            $scope.start_button=false;
             Activity.change_status($scope.activity_name,'started');
-            $scope.start_button="false";
             Set_Item("started_activity",$scope.activity_name);
-            $scope.startbutton=false;
             Set_Item("activity_start",$scope.startbutton);
         };
 
         $scope.end=function(){
-            $scope.start_button="start";
             if(confirm("是否要结束报名？"))
             {
                 Activity.change_status($scope.activity_name,'end');
-                $scope.startbutton=true;
-
-                $scope.start_button="false";
                 Set_Item($scope.activity_name+"activity_start","activity_over");
                 Set_Item("started_activity","");
                 Set_Item("activity_start","activity_over");
                 $location.path('/bid_list/'+$scope.activity_name)
             }
-            else{
-                $scope.start_button=false;
-            };
         };
         $scope.bid_list=function(){
             $location.path('/bid_list/'+$scope.activity_name);
-           // $location.path('/bid_list');
         }
     });

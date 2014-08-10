@@ -7,7 +7,7 @@ angular.module('partyBidApp')
         };
         $scope.creat_activity=function(name){
 
-            if(Check_Repeat("activity_list",name))
+            if(Activity.check_repeat(name))
             {
                 $scope.warn="活动名称有重复，请重新输入！"
             }
@@ -15,10 +15,7 @@ angular.module('partyBidApp')
             {
                 var activity = new Activity(name,'created');
                 activity.creat_activity();
-                //Activity.save_activity(name);
-                $location.path('/activity_sign_up/'+name);
-               // Set_Item("activity_start","true");
-
+                $location.path('/activity_sign_up/'+name+'/'+'created');
             }
         }
   });
