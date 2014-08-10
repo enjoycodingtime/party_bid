@@ -15,8 +15,8 @@ angular.module('partyBidApp')
         $scope.create_activity=function(){
             $location.path('/creat_activity')
         };
-        $scope.activity_sign_up=function(party_name){
-        $location.path('/activity_sign_up/'+party_name)
+        $scope.activity_sign_up=function(activity_name,activity_status){
+        $location.path('/activity_sign_up/'+activity_name+'/'+activity_status)
         }
 
     });

@@ -18,7 +18,7 @@ angular
             templateUrl:'views/creat_activity.html',
             controller: 'creat_activity_controller'
         })
-        .when('/activity_sign_up/:name',
+        .when('/activity_sign_up/:name/:status',
         {
             templateUrl:"views/activity_sign_up.html",
                controller:'activity_sign_up_controller'

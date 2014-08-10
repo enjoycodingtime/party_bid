@@ -6,8 +6,9 @@
 angular.module('partyBidApp')
     .controller('activity_sign_up_controller', function ($scope, $location,$routeParams) {
         $scope.activity_name=$routeParams.name;
-        $scope.party_name=Get_Item("party_name");
-        Set_Item("activity_start",Get_activity_start("activity_start"));//
+        var status=$routeParams.status;
+        $scope.start_button=(status=="created");
+        $scope.button_able=(status=='end')
         $scope.back_list=function(){
             $location.path('/activity_list')
         };
@@ -19,25 +20,11 @@ angular.module('partyBidApp')
             $scope.names=Get_Storage(storage_name);
             $scope.phones=Get_Storage(storage_phone);
             $scope.sign_up_number=Get_Storage(storage_name).length+"人";
-            if(Get_Item("started_activity")==$scope.activity_name||Get_Item($scope.activity_name+"activity_start")=='activity_over')
-            {
-                $scope.start_button="false";
-            }
-            else{
-                $scope.start_button="start";
-            }
-            if(Get_Item("started_activity")!=[]&&Get_Item("started_activity")!=$scope.activity_name||Get_Item($scope.activity_name+"activity_start")=='activity_over')
-            {
-                $scope.button_able=true;
-            }
-
-            else{
-                $scope.button_able=false;
-            }
         };
         $scope.refresh();
 
         $scope.start=function(){
+            Activity.change_status($scope.activity_name,'started');
             $scope.start_button="false";
             Set_Item("started_activity",$scope.activity_name);
             $scope.startbutton=false;
@@ -48,6 +35,7 @@ angular.module('partyBidApp')
             $scope.start_button="start";
             if(confirm("是否要结束报名？"))
             {
+                Activity.change_status($scope.activity_name,'end');
                 $scope.startbutton=true;
 
                 $scope.start_button="false";
