@@ -7,7 +7,7 @@ angular.module('partyBidApp')
     .controller('activity_sign_up_controller', function ($scope, $location,$routeParams) {
         $scope.activity_name=$routeParams.name;
         var status=$routeParams.status;
-        $scope.start_button=(status=="created");
+        $scope.start_button=(status=="created"||status=='end');
         $scope.start_button_able=Activity.has_started_activity();
         $scope.end_button_able=(status=='end');
         $scope.back_list=function(){
@@ -27,6 +27,7 @@ angular.module('partyBidApp')
         $scope.start=function(){
             $scope.start_button=false;
             Activity.change_status($scope.activity_name,'started');
+
         };
 
         $scope.end=function(){

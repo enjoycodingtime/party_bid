@@ -7,8 +7,8 @@
 
         </div>
         <div class="header-right" ng-switch="start_button">
-            <button class="btn btn-style" ng-switch-when=true ng-click="start()"ng-disabled="start_button_able">开始</button>
-            <button class="btn btn-style" ng-switch-when=false ng-click="end()" ng-disabled="end_button_able">结束</button>
+            <button class="btn btn-style" ng-switch-when=true ng-click="start()"ng-disabled="{{start_button_able}}">开始</button>
+            <button class="btn btn-style" ng-switch-when=false ng-click="end()">结束</button>
         </div>
     </header>
 </div>

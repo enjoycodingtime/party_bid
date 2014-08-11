@@ -1,6 +1,3 @@
-/**
- * Created by zhangke on 14-7-31.
- */
 function Bid(){
 
 }
