@@ -15,12 +15,7 @@ angular.module('partyBidApp')
         };
 
         $scope.refresh = function () {
-            var storage_name=$scope.activity_name+"name";
-            var storage_phone=$scope.activity_name+"phone";
-            $scope.startbutton=true;
-            $scope.names=Get_Storage(storage_name);
-            $scope.phones=Get_Storage(storage_phone);
-            $scope.sign_up_number=Get_Storage(storage_name).length+"人";
+            $scope.information=Activity.get_information($scope.activity_name);
         };
         $scope.refresh();
 

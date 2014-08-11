@@ -8,7 +8,7 @@
 
 angular.module('partyBidApp')
     .controller('activity_list_controller', function ($scope, $location) {
-        $scope.lists=Get_Storage('Activity');
+        $scope.lists=Activity.storage();
         $scope.create_activity=function(){
             $location.path('/creat_activity')
         };

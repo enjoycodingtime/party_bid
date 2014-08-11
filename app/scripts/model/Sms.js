@@ -48,6 +48,12 @@ Sms.sign_up_response=function(phone,message){
     }
     else if (Sms.have_started()){
         Activity.save_information(phone,sign_name);
+        Activity_sign_up = angular.element("#activity_sign_up").scope();
+        if(Activity_sign_up!=undefined){
+            Activity_sign_up.$apply(function () {
+                Activity_sign_up.refresh();
+            });
+        }
         return '报名成功！'
     }
     else if (!Sms.have_started()){
