@@ -16,6 +16,7 @@ angular.module('partyBidApp')
 
         $scope.refresh = function () {
             $scope.information=Activity.get_information($scope.activity_name);
+            $scope.sign_up_number=Activity.sign_up_number($scope.activity_name);
         };
         $scope.refresh();
 
