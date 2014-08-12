@@ -46,16 +46,7 @@ Activity.prototype.update = function() {
     });
     Activity.set_storage(activity_list);
 };
-//改变活动状态
-//Activity.change_status = function(name,status){
-//    var activity_list = Activity.storage();
-//    var start_activity=_.find(activity_list,function(list){
-//        return list.name==name;
-//    });
-//    var index=activity_list.indexOf(start_activity);
-//    activity_list[index].status=status;
-//    localStorage['Activity'] = JSON.stringify(activity_list);
-//};
+
 //检查有没重复的活动
 Activity.check_repeat=function(name){
     var activity_list = Activity.storage();
@@ -65,6 +56,7 @@ Activity.check_repeat=function(name){
     });
     return (repeat_activity!=undefined)
 };
+
 //是否有活动开始
 Activity.has_started_activity=function(){
     var activity_list =Activity.storage();
@@ -74,6 +66,7 @@ Activity.has_started_activity=function(){
     });
     return (has_started_activity!=undefined)
 };
+
 //保存报名信息
 Activity.save_information=function(phone,name){
     var activity_list = Activity.storage();
@@ -91,6 +84,7 @@ Activity.save_information=function(phone,name){
     activity_list[index].information=sign_information;
     localStorage['Activity'] = JSON.stringify(activity_list);
 };
+
 //读取报名信息
 Activity.get_information=function(activity_name){
     var activity_list =Activity.storage();
@@ -99,23 +93,23 @@ Activity.get_information=function(activity_name){
     });
     return start_activity.information;
 };
+
 //读取Activity信息
 Activity.storage=function(){
     return JSON.parse(localStorage['Activity'] || '[]');
 };
+
 //存取Activity信息
 Activity.set_storage = function(activity_information){
     localStorage['Activity'] = JSON.stringify(activity_information);
 };
+
 //判断是否已经创建活动
 Activity.activity_number=function(){
     var activity_number=Activity.storage();
-    if(activity_number.length!=0)
-    {
-        return true;
-    }
-    return false;
-};
+    return (activity_number.length == 0);
+   };
+
 //读取活动数量
 Activity.sign_up_number=function(activity_name){
     var activity_list=Activity.storage();

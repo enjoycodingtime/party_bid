@@ -1,7 +1,7 @@
 'use strict';
 angular.module('partyBidApp')
   .controller('creat_activity_controller', function ($scope, $location) {
-        $scope.activity_number=Activity.activity_number();
+        $scope.activity_number=!Activity.activity_number();
         $scope.activity_list=function(){
             $location.path('/activity_list')
         };
