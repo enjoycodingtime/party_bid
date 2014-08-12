@@ -7,7 +7,7 @@ angular.module('partyBidApp')
         };
         $scope.creat_activity=function(name){
 
-            if(Activity.check_repeat(name))
+            if(Activity.find_by({name:name}))
             {
                 $scope.warn="活动名称有重复，请重新输入！"
             }
