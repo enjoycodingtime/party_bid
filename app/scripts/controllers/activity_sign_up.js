@@ -22,15 +22,16 @@ angular.module('partyBidApp')
 
         $scope.start=function(){
             $scope.start_button=false;
-            Activity.change_status($scope.activity_name,'started');
-
+            var activity = Activity.find_by({'name': $scope.activity_name});
+            activity.change_status("started");
         };
 
         $scope.end=function(){
             if(confirm("是否要结束报名？"))
             {
-                Activity.change_status($scope.activity_name,'end');
-                $location.path('/bid_list/'+$scope.activity_name)
+                var activity = Activity.find_by({'name': $scope.activity_name});
+                activity.change_status("end");
+                //$location.path('/bid_list/'+$scope.activity_name)
             }
         };
         $scope.bid_list=function(){

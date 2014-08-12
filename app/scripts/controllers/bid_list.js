@@ -6,11 +6,11 @@
 angular.module('partyBidApp')
     .controller('bid_list_controller', function ($scope, $location,$routeParams){
         $scope.activity_name=$routeParams.name;
-        $scope.button_disable=Bid.judge_start_button();
-        $scope.bid_lists=Get_Storage($routeParams.name+"bid_list");
-        $scope.started_bid=Get_Item("message_activity")+Get_Item("started_bid");
+//        $scope.button_disable=;
+//        $scope.bid_lists=Ge;
+//        $scope.started_bid=;
         $scope.activity_sign_up=function(){
-                        $location.path('/activity_sign_up/'+$routeParams.name);
+                        $location.path('/activity_sign_up/'+$routeParams.name+'/'+'end');
         };
         $scope.back_list=function(){
             $location.path('/activity_list')

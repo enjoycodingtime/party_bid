@@ -24,16 +24,38 @@ Activity.prototype.creat_activity = function() {
  * @param name
  * @param status
  */
-//改变活动状态
-Activity.change_status = function(name,status){
+
+Activity.find_by = function(obj) {
     var activity_list = Activity.storage();
-    var start_activity=_.find(activity_list,function(list){
-        return list.name==name;
-    });
-    var index=activity_list.indexOf(start_activity);
-    activity_list[index].status=status;
-    localStorage['Activity'] = JSON.stringify(activity_list);
+    var activity = _.findWhere(activity_list, obj);
+    return new Activity(activity.name,activity.status);
 };
+
+Activity.prototype.change_status = function(status) {
+    this.status = status;
+    this.update();
+};
+Activity.prototype.update = function() {
+    var self = this;
+    var activity_list = Activity.storage();
+    activity_list = _(activity_list).map(function(activity) {
+        if (activity.name === self.name) {
+            activity = self;
+        }
+        return activity;
+    });
+    Activity.set_storage(activity_list);
+};
+//改变活动状态
+//Activity.change_status = function(name,status){
+//    var activity_list = Activity.storage();
+//    var start_activity=_.find(activity_list,function(list){
+//        return list.name==name;
+//    });
+//    var index=activity_list.indexOf(start_activity);
+//    activity_list[index].status=status;
+//    localStorage['Activity'] = JSON.stringify(activity_list);
+//};
 //检查有没重复的活动
 Activity.check_repeat=function(name){
     var activity_list = Activity.storage();
@@ -81,6 +103,10 @@ Activity.get_information=function(activity_name){
 Activity.storage=function(){
     return JSON.parse(localStorage['Activity'] || '[]');
 };
+//存取Activity信息
+Activity.set_storage = function(activity_information){
+    localStorage['Activity'] = JSON.stringify(activity_information);
+};
 //判断是否已经创建活动
 Activity.activity_number=function(){
     var activity_number=Activity.storage();
@@ -113,38 +139,8 @@ Activity.check_phone_repeat=function(phone){
     var hava_repeat=_.find(started_activity.information,function(list){
         return list.phone==phone;
     });
-    console.log(hava_repeat!=undefined);
     return (hava_repeat!=undefined)
 };
-//Activity.get_activity_name=function(){
-//    var activity_list=Activity.storage();
-//    var start_activity=_.find(activity_list,function(list){
-//        return list.name==activity_name;
-//    });
-//};
-//function Get_Storage(key){
-//        return JSON.parse(localStorage[key] || '[]');
-//}
-//function Get_Item(storage_name){
-//    return localStorage.getItem(storage_name);
-//}
-//function Get_activity_start(storage_name){
-//    return localStorage.getItem(storage_name)||true;
-//}
-//function Set_Item(key,value){
-//    localStorage.setItem(key,value);
-//    return 0;
-//}
-//
-//function Push_Array(key,value){
-//    var array_list= JSON.parse(localStorage[key] || '[]');
-//    array_list.unshift(value);
-//    localStorage[key]=JSON.stringify(array_list);
-//};
-//function Push_Array1(key,value){
-//    var array_list= JSON.parse(localStorage[key] || '[]');
-//    array_list.push(value);
-//    localStorage[key]=JSON.stringify(array_list);
-//};
+
 
 
