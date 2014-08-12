@@ -47,14 +47,20 @@ Sms.sign_up_response=function(phone,message){
         return  '活动尚未开始！请稍侯';
     }
     else if (Sms.have_started()){
-        Activity.save_information(phone,sign_name);
-        Activity_sign_up = angular.element("#activity_sign_up").scope();
-        if(Activity_sign_up!=undefined){
-            Activity_sign_up.$apply(function () {
-                Activity_sign_up.refresh();
-            });
+        if(Activity.check_phone_repeat(phone))
+        {
+            return '对不起，你的电话已经报名，报名重复！'
         }
-        return '报名成功！'
+        else{
+            Activity.save_information(phone,sign_name);
+            Activity_sign_up = angular.element("#activity_sign_up").scope();
+            if(Activity_sign_up!=undefined){
+                Activity_sign_up.$apply(function () {
+                    Activity_sign_up.refresh();
+                });
+            }
+            return '报名成功！'
+        }
     }
     else if (!Sms.have_started()){
         return "Sorry!活动报名已经结束！"

@@ -96,16 +96,25 @@ Activity.sign_up_number=function(activity_name){
     var start_activity=_.find(activity_list,function(list){
         return list.name==activity_name;
     });
-    console.log(start_activity);
-    console.log(typeof(activity_list.information));
-    console.log(activity_list.information==undefined);
     try{
         return start_activity.information.length;
     }
     catch(err){
         return '0';
     }
+};
+//检查电话号码是否重复
+Activity.check_phone_repeat=function(phone){
+    var activity_list = Activity.storage();
 
+    var started_activity=_.find(activity_list,function(list){
+        return list.status=='started';
+    });
+    var hava_repeat=_.find(started_activity.information,function(list){
+        return list.phone==phone;
+    });
+    console.log(hava_repeat!=undefined);
+    return (hava_repeat!=undefined)
 };
 //Activity.get_activity_name=function(){
 //    var activity_list=Activity.storage();
