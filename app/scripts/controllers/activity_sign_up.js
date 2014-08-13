@@ -34,7 +34,7 @@ angular.module('partyBidApp')
                 var activity = new Activity(result.name,result.status);
                 activity.status = 'end';
                 activity.update();
-                //$location.path('/bid_list/'+$scope.activity_name)
+                $location.path('/bid_list/'+$scope.activity_name)
             }
         };
         $scope.bid_list = function(){

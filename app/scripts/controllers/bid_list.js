@@ -16,8 +16,10 @@ angular.module('partyBidApp')
             $location.path('/activity_list')
         };
         $scope.creat_bid_sign_up=function(){
-            var bid_name=Bid.creat_bid($routeParams.name);//  创建竞价
-            $location.path('/bid_sign_up/'+bid_name+'/'+($scope.activity_name)+'/'+false);
+            var bid = new Bid($scope.activity_name,Bid.get_name(),'created');
+            bid.creat_bid();
+//            var bid_name=Bid.creat_bid($routeParams.name);
+            //$location.path('/bid_sign_up/'+bid_name+'/'+($scope.activity_name)+'/'+false);
 
         };
         $scope.bid_sign_up=function(name){

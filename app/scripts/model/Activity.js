@@ -9,7 +9,7 @@ Activity.prototype.creat_activity = function() {
     save_object.status = this.status;
     var activity_list = Activity.storage();
     activity_list.unshift(this);
-    localStorage['Activity'] = JSON.stringify(activity_list);
+    Activity.set_storage(activity_list);
 };
 //查找
 Activity.find_by = function(obj) {
