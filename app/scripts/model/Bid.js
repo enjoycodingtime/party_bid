@@ -1,5 +1,5 @@
 function Bid(activity,name,status){
-    this.activity=activity;
+    this.activity = activity;
     this.name = name;
     this.status = status;
 }
@@ -26,6 +26,41 @@ Bid.get_name = function(){
     catch(err){
         return "竞价1";
     }
+};
+Bid.find_by = function(bid) {
+    var bid_list = Bid.storage();
+    console.log(_.findWhere(bid_list,bid));
+    return _.findWhere(bid_list,bid);
+};
+
+//更新
+Bid.prototype.update = function() {
+    var self = this;
+    var bid_list = Bid.storage();
+    bid_list = _(bid_list).map(function(bid) {
+        if (bid.name === self.name && bid.activity === self.activity) {
+            bid.status = self.status;
+        }
+        return bid;
+    });
+    Bid.set_storage(bid_list);
+};
+
+//存储报名信息
+Bid.save_information=function(phone,name){
+    var bid_list = Bid.storage();
+    var start_bid=_.find(bid_list,function(list){
+        return list.status=='started';
+    });
+    var index = bid_list.indexOf(start_bid);
+    var sign_information = bid_list[index].information||[];
+    var person = {
+        'name':name,
+        'phone':phone
+    };
+    sign_information.unshift(person);
+    bid_list[index].information = sign_information;
+    Bid.set_storage(bid_list);
 };
 // Bid.save_bid=function(key){
 //     var bid_list= JSON.parse(localStorage[key] || '[]');
