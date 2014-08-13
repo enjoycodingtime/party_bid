@@ -32,7 +32,7 @@ angular
             templateUrl:'views/bid_list.html',
             controller:'bid_list_controller'
         })
-        .when('/bid_sign_up/:bid_sign_up_name/:activity_name/:button_able',{
+        .when('/bid_sign_up/:bid_sign_up_name/:activity_name',{
             templateUrl:'views/bid_sign_up.html',
             controller:'bid_sign_up_controller'
         })

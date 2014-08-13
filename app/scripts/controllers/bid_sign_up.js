@@ -8,13 +8,13 @@ angular.module('partyBidApp')
         $scope.bid_sign_up_name=$routeParams.bid_sign_up_name;
         $scope.activity_name=$routeParams.activity_name;
         //$scope.button_disable=$routeParams.button_able;
-        $scope.button_disable=Bid.judge_color($scope.bid_sign_up_name);
-        $scope.refresh = function () {
-            $scope.informations=Get_Storage($scope.activity_name+$scope.bid_sign_up_name+"information");
-            $scope.sign_up_number='('+JSON.parse(localStorage[$scope.activity_name+$scope.bid_sign_up_name+"information"] || '[]').length+"人"+')';
-           };
+       // $scope.button_disable=Bid.judge_color($scope.bid_sign_up_name);
+        // $scope.refresh = function () {
+        //     $scope.informations=Get_Storage($scope.activity_name+$scope.bid_sign_up_name+"information");
+        //     $scope.sign_up_number='('+JSON.parse(localStorage[$scope.activity_name+$scope.bid_sign_up_name+"information"] || '[]').length+"人"+')';
+        //    };
 
-        $scope.refresh();
+        // $scope.refresh();
         $scope.back_bid_list=function(){
             $location.path('/bid_list/'+$scope.activity_name)
         };

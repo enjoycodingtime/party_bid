@@ -6,6 +6,7 @@
 angular.module('partyBidApp')
     .controller('bid_list_controller', function ($scope, $location,$routeParams){
         $scope.activity_name=$routeParams.name;
+        $scope.bid_lists=Bid.storage();
 //        $scope.button_disable=;
 //        $scope.bid_lists=Ge;
 //        $scope.started_bid=;
@@ -16,14 +17,13 @@ angular.module('partyBidApp')
             $location.path('/activity_list')
         };
         $scope.creat_bid_sign_up=function(){
-            var bid = new Bid($scope.activity_name,Bid.get_name(),'created');
+            var bid = new Bid($scope.activity_name,Bid.get_name(),'start');
             bid.creat_bid();
-//            var bid_name=Bid.creat_bid($routeParams.name);
-            //$location.path('/bid_sign_up/'+bid_name+'/'+($scope.activity_name)+'/'+false);
+            $location.path('/bid_sign_up/'+Bid.get_name()+'/'+($scope.activity_name));
 
         };
         $scope.bid_sign_up=function(name){
-            $location.path('/bid_sign_up/'+name+'/'+($scope.activity_name)+'/'+true);
+            $location.path('/bid_sign_up/'+name+'/'+($scope.activity_name));
 
         };
 
