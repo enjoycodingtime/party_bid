@@ -22,9 +22,9 @@ angular.module('partyBidApp')
             if(confirm("是否要结束本次竞价？"))
             {
                 $scope.button_disable=true;
-                var result = Bid.find_by({'status':'started'});
-                var bid = new Bid(result.activity,result.name,result.status);
-                bid.status = 'end';
+                var result = Activity.find_by({'name':$scope.activity_name});
+                console.log(result.bid_information);
+                var bid = new Bid($scope.activity_name,$scope.bid_sign_up_name,'end');
                 bid.update();
                 // $location.path('/bid_result/'+$scope.activity_name+'/'+$scope.bid_sign_up_name);
             }
