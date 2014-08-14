@@ -1,9 +1,4 @@
-/**
- * Created by zhangke on 14-7-15.
- */
-/**
- * Created by zhangke on 14-7-15.
- */
+
 'use strict';
 
 angular.module('partyBidApp')

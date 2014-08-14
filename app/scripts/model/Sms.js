@@ -1,43 +1,8 @@
+
 function Sms(){
 
 }
-Sms.add_information = function(storage_name,sign_name,storage_phone,sign_phone){
-    Push_Array(storage_name, sign_name);
-    Push_Array(storage_phone, sign_phone);
-    localStorage['message_activity'] = Get_Item("started_activity");
-    Sign_up_Scope = angular.element("#activity_sign-up").scope();
-    if(Sign_up_Scope!=undefined){
-        Sign_up_Scope.$apply(function () {
-            Sign_up_Scope.refresh();
-        });
-    }
 
-
-};
-Sms.check_bid_number=function(phone){
-    //Get_Item("started_activity");
-    var phone_list= Get_Storage(Get_Item("message_activity")+'phone');
-    for(var i=0;i<phone_list.length;i++)
-    {
-        if(phone_list[i]==phone)
-        {
-            return true;
-        }
-    }
-    return false;
-};
-Sms.check_bid_number_repeat=function(phone){
-    //Get_Item("started_activity");
-    var phone_list= Get_Storage(Get_Item('message_activity')+Get_Item('started_bid')+"information");
-    for(var i=0;i<phone_list.length;i++)
-    {
-        if(phone_list[i].phone==phone)
-        {
-            return true;
-        }
-    }
-    return false;
-};
 Sms.sign_up_response=function(phone,message){
     sign_name = message.substr(2, 8);
     if(!Sms.have_started()&&!Sms.have_end()) {
@@ -62,10 +27,8 @@ Sms.sign_up_response=function(phone,message){
     else if (!Sms.have_started()){
         return "Sorry!活动报名已经结束！"
     }
-
-
-
 };
+
 Sms.bid_response=function(phone,message){
     JSON.stringify(message);
   if(Get_Item('started_bid')==''){
@@ -110,17 +73,7 @@ Sms.bid_response=function(phone,message){
 }
 
 };
-Sms.find_name=function(phone){
-    var phone_list=Get_Storage(Get_Item('message_activity')+'phone');
-    var name_list=Get_Storage(Get_Item('message_activity')+'name');
-    for(var i=0;i<phone_list.length;i++)
-    {
-        if(phone_list[i]==phone)
-        {
-            return name_list[i];
-        }
-    }
-};
+
 Sms.have_started=function(){
     var activity_list = JSON.parse(localStorage['Activity'] || '[]');
     var has_started_activity=_.find(activity_list,function(list){

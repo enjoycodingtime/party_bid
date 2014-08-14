@@ -17,13 +17,11 @@ var native_accessor = {
         if(message.search(/bm/i) == 0) {
             var message=Sms.sign_up_response(message_json.messages[0].phone,message_json.messages[0].message);
             native_accessor.send_sms(message_json.messages[0].phone,message);
-
         }
 
         else if(message.search(/jj/i) == 0){
             var message=Sms.bid_response(message_json.messages[0].phone,message_json.messages[0].message);
             native_accessor.send_sms(message_json.messages[0].phone,message);
-
         }
 
 }

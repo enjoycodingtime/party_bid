@@ -22,11 +22,24 @@ Bid.prototype.creat_bid = function() {
     });
     Activity.set_storage(activity_list);
 };
+Bid.find_started_bid = function() {
+    var list = Activity.storage();
+    var resule = _.find(list,function(num){
+        if(_.findWhere(num.bid_information,{'bid_status':'started'})){
+            return num;
+        }        
+    });
+    return resule;
+}
+
+Bid.find_by = function(activity_name,obj) {
+    var information = Activity.find_by({'name':activity_name}).bid_information;
+    return _.findWhere(information,obj);
+}
 
 //get the bid name
 Bid.get_name = function(activity_name){
     try{
-        console.log(Activity.find_by({'name':activity_name}).bid_information.length+1);
         return "竞价"+(Activity.find_by({'name':activity_name}).bid_information.length+1);
     }
     catch(err){
@@ -45,11 +58,9 @@ Bid.prototype.update = function() {
             for (var position = 0;position < bid.length; position++){
                 if (bid[position].bid_status == 'started'){
                     bid[position].bid_status = 'end';
-                }
-               
+                }               
             }
             activity.bid_information = bid;
-            console.log(activity.bid_information);
         }
         return activity;
     });
@@ -71,3 +82,11 @@ Bid.save_information=function(phone,name){
     bid_list[index].information = sign_information;
     Bid.set_storage(bid_list);
 };
+
+//Check that registration
+Bid.check_sign_up = function(activity,phone){
+    var have_repeat=_.find(Activity.find_by({name:activity}).information,function(list){
+        return list.phone==phone;
+    });
+    return (have_repeat!=undefined)
+}
