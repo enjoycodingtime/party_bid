@@ -6,7 +6,7 @@
 angular.module('partyBidApp')
     .controller('bid_list_controller', function ($scope, $location,$routeParams){
         $scope.activity_name=$routeParams.name;
-        $scope.bid_lists=Bid.storage();
+        $scope.bid_lists=Activity.find_by({'name':$scope.activity_name}).bid_information;
         $scope.button_disable=Boolean(Bid.find_by({status:'started'}));
 //        $scope.bid_lists=Ge;
 //        $scope.started_bid=;
