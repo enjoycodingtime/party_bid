@@ -5,13 +5,22 @@ function Bid(activity,name,status){
 }
 //创建竞价
 Bid.prototype.creat_bid = function() {
-    var bid_object = {} ;
-    bid_object.activity=this.activity;
-    bid_object.name = this.name;
-    bid_object.status = this.status;
-    var bid_list = Bid.storage();
-    bid_list.unshift(this);
-    Bid.set_storage(bid_list);
+    var self = this;
+    var activity_list = Activity.storage();
+    activity_list = _(activity_list).map(function(activity) {
+        if (activity.name === self.activity) {
+            var bid = new Array();
+            bid = activity.bid_information||[];
+            var bid_inf = {
+                'bid_name':self.name,
+                'bid_status':self.status
+            }
+            bid.unshift(bid_inf);
+            activity.bid_information = bid;
+        }
+        return activity;
+    });
+    Activity.set_storage(activity_list);
 };
 Bid.storage = function(){
     return JSON.parse(localStorage['Bid'] || '[]');
@@ -19,9 +28,10 @@ Bid.storage = function(){
 Bid.set_storage = function(bid_information){
     localStorage['Bid'] = JSON.stringify(bid_information);
 };
-Bid.get_name = function(){
+Bid.get_name = function(activity_name){
     try{
-        return "竞价"+(Bid.storage().length+1);
+        console.log(Activity.find_by({'name':activity_name}).bid_information.length+1);
+        return "竞价"+(Activity.find_by({'name':activity_name}).bid_information.length+1);
     }
     catch(err){
         return "竞价1";
@@ -29,7 +39,6 @@ Bid.get_name = function(){
 };
 Bid.find_by = function(bid) {
     var bid_list = Bid.storage();
-    console.log(_.findWhere(bid_list,bid));
     return _.findWhere(bid_list,bid);
 };
 
@@ -41,7 +50,7 @@ Bid.prototype.update = function() {
         if (bid.name === self.name && bid.activity === self.activity) {
             bid.status = self.status;
         }
-        return bid;
+        return bid
     });
     Bid.set_storage(bid_list);
 };
