@@ -14,13 +14,7 @@ Sms.sign_up_response=function(phone,message){
             return '对不起，你的电话已经报名，报名重复！'
         }
         else{
-            Activity.save_information(phone,sign_name);
-            Activity_sign_up = angular.element("#activity_sign_up").scope();
-            if(Activity_sign_up!=undefined){
-                Activity_sign_up.$apply(function () {
-                    Activity_sign_up.refresh();
-                });
-            }
+            Sms.save_sign_up(phone,sign_name);
             return '报名成功！'
         }
     }
@@ -45,13 +39,7 @@ Sms.bid_response=function(phone,message){
              return '价格格式不正确！'
           }
           else{
-            Bid.save_information(phone,parseInt(price));
-            Bid_sign_up = angular.element("#bid_sign_up").scope();
-            if(Bid_sign_up != undefined){
-              Bid_sign_up.$apply(function (){
-                Bid_sign_up.refresh();
-              });
-            }
+            Sms.save_bid(phone,price);
             return '恭喜！您已出价成功';
             
           }
@@ -67,10 +55,31 @@ Sms.have_started=function(){
     });
     return (has_started_activity!=undefined)
 };
+
 Sms.have_end=function(){
     var activity_list = JSON.parse(localStorage['Activity'] || '[]');
     var has_started_activity=_.find(activity_list,function(list){
         return list.status=='end';
     });
     return (has_started_activity!=undefined)
+};
+
+Sms.save_sign_up = function(phone,sign_name){
+    Activity.save_information(phone,sign_name);
+    Activity_sign_up = angular.element("#activity_sign_up").scope();
+    if(Activity_sign_up!=undefined){
+        Activity_sign_up.$apply(function () {
+            Activity_sign_up.refresh();
+        });
+    }
+};
+
+Sms.save_bid = function(phone,price){
+    Bid.save_information(phone,parseInt(price));
+    Bid_sign_up = angular.element("#bid_sign_up").scope();
+    if(Bid_sign_up != undefined){
+      Bid_sign_up.$apply(function (){
+        Bid_sign_up.refresh();
+      });
+    }
 };

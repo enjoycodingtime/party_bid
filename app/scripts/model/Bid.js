@@ -64,7 +64,8 @@ Bid.prototype.update = function() {
         }
         return activity;
     });
-    Activity.set_storage(activity_list);};
+    Activity.set_storage(activity_list);
+};
 
 //Check that registration
 Bid.check_sign_up = function(activity,phone){
@@ -87,11 +88,7 @@ Bid.save_information = function(phone,price){
     var result =Bid.find_started_bid();
     var bid_sign_information = result.bid_information[0].sign_up||[];
     var name = Bid.find_name(phone);
-    bid_sign_information .unshift({
-        'name':name,
-        'phone':phone,
-        'price':price
-    });
+    bid_sign_information .unshift({'name':name,'phone':phone,'price':price});
     result.bid_information[0].sign_up = bid_sign_information;
     activity_list = _(activity_list).map(function(activity) {
         if (activity.name === result.name) {

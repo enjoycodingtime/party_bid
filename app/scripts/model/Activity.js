@@ -33,9 +33,7 @@ Activity.prototype.update = function() {
 //存储报名信息
 Activity.save_information=function(phone,name){
     var activity_list = Activity.storage();
-    var start_activity=_.find(activity_list,function(list){
-        return list.status=='started';
-    });
+    var start_activity=_.findWhere(activity_list,{'status':'started'});
     var index = activity_list.indexOf(start_activity);
     var sign_information = activity_list[index].information||[];
     var person = {
