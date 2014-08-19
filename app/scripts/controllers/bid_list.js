@@ -8,8 +8,7 @@ angular.module('partyBidApp')
         $scope.activity_name=$routeParams.name;
         $scope.bid_lists=Activity.find_by({'name':$scope.activity_name}).bid_information;
         $scope.button_disable=Boolean(_.findWhere((Activity.find_by({'name':$scope.activity_name})).bid_information,{'bid_status':'started'}));
-//        $scope.bid_lists=Ge;
-//        $scope.started_bid=;
+
         $scope.activity_sign_up=function(){
                         $location.path('/activity_sign_up/'+$routeParams.name+'/'+'end');
         };
@@ -17,10 +16,19 @@ angular.module('partyBidApp')
             $location.path('/activity_list')
         };
         $scope.creat_bid_sign_up=function(){
-            var bid = new Bid($scope.activity_name,Bid.get_name($scope.activity_name),'started');
+            try {var sign_up_number = Activity.find_by({'name':$scope.activity_name}).information.length
+             }catch(err){
+                sign_up_number = 0;
+             }
+
+            if(sign_up_number == 0){
+                confirm("Can not start bidding, because nobody Registration")
+            }else{
+                var bid = new Bid($scope.activity_name,Bid.get_name($scope.activity_name),'started');
             bid.creat_bid();
             $location.path('/bid_sign_up/'+("竞价"+Activity.find_by({'name':$scope.activity_name}).bid_information.length)+'/'+($scope.activity_name)+'/'+'started');
-
+            }
+            
         };
         $scope.bid_sign_up=function(name,status){
             $location.path('/bid_sign_up/'+name+'/'+($scope.activity_name)+'/'+status);
