@@ -4,6 +4,7 @@
 angular.module('partyBidApp')
     .controller('activity_list_controller', function ($scope, $location) {
         $scope.lists=Activity.storage();
+        $scope.creat_button = Boolean(Bid.find_started_bid());
         $scope.create_activity=function(){
             $location.path('/creat_activity')
         };
