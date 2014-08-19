@@ -150,4 +150,10 @@ Bid.statistics = function(argument){
     });
 };
 
-
+Bid.started_bid_activity_name = function(){
+    try{
+        return Bid.find_started_bid().name;
+    }catch(err){
+        return false;
+    }
+};

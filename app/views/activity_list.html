@@ -11,7 +11,7 @@
                 <ul class="list-style-3">
 
 
-                    <li  ng-repeat="list in lists" ng-click="activity_sign_up(list.name,list.status)" class="{{list.status=='started'}}"  >
+                    <li  ng-repeat="list in lists" ng-click="activity_sign_up(list.name,list.status)" class="{{list.status=='started' || list.name == has_bid_sign_up}}"  >
                         <p class="pagination-centered">{{list.name}}</p>
                     </li>
                 </ul>
