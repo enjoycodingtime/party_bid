@@ -74,7 +74,7 @@ Activity.sign_up_number=function(activity_name){
 };
 //检查电话号码是否重复
 Activity.check_phone_repeat=function(phone){
-    Activity.find_by({status:'started'});
+    //Activity.find_by({status:'started'});
     var have_repeat=_.find(Activity.find_by({status:'started'}).information,function(list){
         return list.phone==phone;
     });

@@ -24,12 +24,12 @@ Bid.prototype.creat_bid = function() {
 };
 Bid.find_started_bid = function() {
     var list = Activity.storage();
-    var resule = _.find(list,function(num){
+    var result = _.find(list,function(num){
         if(_.findWhere(num.bid_information,{'bid_status':'started'})){
             return num;
         }        
     });
-    return resule;
+    return result;
 }
 
 Bid.find_by = function(activity_name,obj) {
@@ -66,27 +66,66 @@ Bid.prototype.update = function() {
     });
     Activity.set_storage(activity_list);};
 
-//存储报名信息
-Bid.save_information=function(phone,name){
-    var bid_list = Bid.storage();
-    var start_bid=_.find(bid_list,function(list){
-        return list.status=='started';
-    });
-    var index = bid_list.indexOf(start_bid);
-    var sign_information = bid_list[index].information||[];
-    var person = {
-        'name':name,
-        'phone':phone
-    };
-    sign_information.unshift(person);
-    bid_list[index].information = sign_information;
-    Bid.set_storage(bid_list);
-};
-
 //Check that registration
 Bid.check_sign_up = function(activity,phone){
     var have_repeat=_.find(Activity.find_by({name:activity}).information,function(list){
         return list.phone==phone;
     });
     return (have_repeat!=undefined)
+};
+
+Bid.find_name = function(phone){
+    var activity = Bid.find_started_bid().name;
+    var have_repeat=_.find(Activity.find_by({name:activity}).information,function(list){
+        return list.phone==phone;
+    });
+    return have_repeat.name;
+};
+
+Bid.save_information = function(phone,price){
+    var activity_list = Activity.storage();
+    var result =Bid.find_started_bid();
+    var bid_sign_information = result.bid_information[0].sign_up||[];
+    var name = Bid.find_name(phone);
+    bid_sign_information .unshift({
+        'name':name,
+        'phone':phone,
+        'price':price
+    });
+    result.bid_information[0].sign_up = bid_sign_information;
+    activity_list = _(activity_list).map(function(activity) {
+        if (activity.name === result.name) {
+            activity.bid_information = result.bid_information;
+        }
+        return activity;
+    });
+    Activity.set_storage(activity_list);
+};
+
+Bid.show_bid_information = function(activity_name,bid_sign_name){
+    var bid_list = Activity.find_by({name:activity_name}).bid_information;
+    return _.findWhere(bid_list,{'bid_name':bid_sign_name}).sign_up;
+};
+
+Bid.bid_number = function (activity_name,bid_sign_name){
+    try{
+        return Bid.show_bid_information(activity_name,bid_sign_name).length;
+    }catch(err){
+        return '0';
+    }
+};  
+
+Bid.check_bid_sign_up_repeat = function(phone){
+    var activity_name = Bid.find_started_bid().name;
+    var bid_sign_name = Bid.find_started_bid().bid_information[0].bid_name;
+    var sign_information = Bid.show_bid_information(activity_name,bid_sign_name);
+    return _.findWhere(sign_information,{'phone':phone})
+};
+
+Bid.sort_result_information = function(activity_name,bid_sign_name){
+    var bid_list = Bid.show_bid_information(activity_name,bid_sign_name);
+    _.sortBy(bid_list,function(){
+        return "price"
+    });
+
 }
