@@ -27,8 +27,6 @@ var native_accessor = {
 }
 }
 
-
-
 function notify_message_received(message_json) {
 
    native_accessor.receive_message(message_json);
