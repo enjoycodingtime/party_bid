@@ -124,8 +124,30 @@ Bid.check_bid_sign_up_repeat = function(phone){
 
 Bid.sort_result_information = function(activity_name,bid_sign_name){
     var bid_list = Bid.show_bid_information(activity_name,bid_sign_name);
-    _.sortBy(bid_list,function(){
-        return "price"
-    });
+    return _.sortBy(bid_list,"price");
+};
 
-}
+Bid.win_person = function(sorted_information){
+    var group = _.groupBy(sorted_information,'price');
+    Bid.statistics(group);
+
+    var win_price = _.find(group,function(num){
+        return num.length == 1;
+    });
+    if(win_price == undefined){
+        win_price = {information:'竞价失败！'};
+        return win_price;
+    }else{
+        win_price[0].information = '竞价成功！';
+        return win_price[0];
+    }
+
+};
+
+Bid.statistics = function(argument){
+    return result = _.map(argument,function(value,key){
+        return {'price':key,'count':value.length}
+    });
+};
+
+

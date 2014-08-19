@@ -36,7 +36,7 @@ angular
             templateUrl:'views/bid_sign_up.html',
             controller:'bid_sign_up_controller'
         })
-        .when('/bid_result/:activity_name/:bid_sign_up_name',{
+        .when('/bid_result/:activity_name/:bid_sign_up_name/:show_of_hide',{
             templateUrl:'views/bid_result.html',
             controller:'bid_result_controller'
         })

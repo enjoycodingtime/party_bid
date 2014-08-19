@@ -11,9 +11,10 @@ angular.module('partyBidApp')
             $location.path('/bid_list/'+$scope.activity_name)
         };
         $scope.bid_result=function(){
-            $location.path('/bid_result/'+$scope.activity_name+'/'+$routeParams.bid_sign_up_name);
+            $location.path('/bid_result/'+$scope.activity_name+'/'+$routeParams.bid_sign_up_name+'/'+'hide');
         };
-        $scope.bid_statistics=Get_Storage('bid_result');
         $scope.result_information=Bid.sort_result_information($scope.activity_name,$scope.bid_sign_up_name);
+        var group = _.groupBy($scope.result_information,'price');
+        $scope.bid_statistics=Bid.statistics(group);
         $scope.win=Bid.win_person($scope.result_information);
     });

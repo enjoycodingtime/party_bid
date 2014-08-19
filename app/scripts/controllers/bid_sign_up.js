@@ -26,7 +26,7 @@ angular.module('partyBidApp')
                 var result = Activity.find_by({'name':$scope.activity_name});
                 var bid = new Bid($scope.activity_name,$scope.bid_sign_up_name,'end');
                 bid.update();
-                // $location.path('/bid_result/'+$scope.activity_name+'/'+$scope.bid_sign_up_name);
+                $location.path('/bid_result/'+$scope.activity_name+'/'+$scope.bid_sign_up_name+'/'+'show');
             }
             else{
 
